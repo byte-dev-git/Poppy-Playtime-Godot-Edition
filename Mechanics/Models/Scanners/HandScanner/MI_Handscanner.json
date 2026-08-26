@@ -1,0 +1,60 @@
+{
+  "Textures": {},
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "DenyColor": {
+        "R": 1.0,
+        "G": 0.010416687,
+        "B": 0.010416687,
+        "A": 1.0,
+        "Hex": "FF1A1A"
+      },
+      "HandScanColor": {
+        "R": 0.0,
+        "G": 0.652016,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "00D3FF"
+      },
+      "ScreenColor": {
+        "R": 0.020611703,
+        "G": 0.521873,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "27BFFF"
+      },
+      "VerifiedColor": {
+        "R": 0.1919539,
+        "G": 1.0,
+        "B": 0.12400848,
+        "A": 1.0,
+        "Hex": "79FF63"
+      }
+    },
+    "Scalars": {
+      "HandAcceptance_Switch": 0.0,
+      "Idle_Switch": 1.0,
+      "VerifyDenySwitch": 0.0,
+      "IdleHandEmissive": 200.0,
+      "NoPowerSwitch": 0.0,
+      "Y_Offset_Inner": 1.0,
+      "Y_Offset_Outer": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": true
+  }
+}

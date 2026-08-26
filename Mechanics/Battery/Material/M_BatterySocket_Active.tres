@@ -1,0 +1,29 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://dwnhyvxmfpanh"]
+
+[ext_resource type="Texture2D" uid="uid://dxeeswtuxjbey" path="res://Mechanics/Battery/Material/Textures/T_BatteryFrame_BC.png" id="1_mjh8c"]
+[ext_resource type="Texture2D" uid="uid://uihxmobpq8en" path="res://Mechanics/Battery/Material/Textures/T_BatteryFrame_ORMA.png" id="2_v3bqi"]
+
+[sub_resource type="Gradient" id="Gradient_m1pul"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_krued"]
+gradient = SubResource("Gradient_m1pul")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjh8c"]
+transparency = 4
+shading_mode = 0
+albedo_texture = ExtResource("2_v3bqi")
+albedo_texture_force_srgb = true
+detail_enabled = true
+detail_albedo = SubResource("GradientTexture1D_krued")
+z_clip_scale = 0.01
+stencil_flags = 2
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_mjh8c")
+albedo_texture = ExtResource("1_mjh8c")
+orm_texture = ExtResource("2_v3bqi")
+emission_enabled = true
+ao_enabled = true
+ao_light_affect = 1.0

@@ -1,0 +1,16 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://4aieood54vjt"]
+
+[ext_resource type="Texture2D" uid="uid://bugi76rb4l4ui" path="res://Character/HandMaterials/Textures/T_RedHandOld_BC.png" id="1_e8ndn"]
+[ext_resource type="Texture2D" uid="uid://d11wmii8v8xkg" path="res://Character/HandMaterials/Textures/T_RedHandOld_BNT.png" id="2_uq7ni"]
+[ext_resource type="Texture2D" uid="uid://coldd2eawsy22" path="res://Character/HandMaterials/Textures/T_RedHandOld_N.png" id="3_mxgqa"]
+[ext_resource type="Texture2D" uid="uid://c2pyxxysbltxx" path="res://Character/HandMaterials/Textures/T_RedHandOld_ORM.png" id="4_m6bfh"]
+
+[resource]
+albedo_texture = ExtResource("1_e8ndn")
+orm_texture = ExtResource("4_m6bfh")
+normal_enabled = true
+normal_texture = ExtResource("3_mxgqa")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("2_uq7ni")
+ao_enabled = true
+ao_light_affect = 1.0

@@ -1,0 +1,13 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://doh4k5imb3faf"]
+
+[ext_resource type="Texture2D" uid="uid://dfqm7go7ba3tk" path="res://Mechanics/Limon/Materials/Textures/T_Limon_BC.png" id="1_n7t7d"]
+[ext_resource type="Texture2D" uid="uid://bjosd8dvyikc2" path="res://Mechanics/Limon/Materials/Textures/T_Limon_N.png" id="2_ibu2l"]
+[ext_resource type="Texture2D" uid="uid://clt81g7hk4jkv" path="res://Mechanics/Limon/Materials/Textures/T_Limon_ORM.png" id="3_6hwjw"]
+
+[resource]
+albedo_texture = ExtResource("1_n7t7d")
+orm_texture = ExtResource("3_6hwjw")
+normal_enabled = true
+normal_texture = ExtResource("2_ibu2l")
+ao_enabled = true
+ao_light_affect = 1.0

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://blxh0x5thcueg"]
+
+[ext_resource type="Texture2D" uid="uid://jsrak2utny4v" path="res://Mechanics/PowerPuzzle/Models/Textures/T_PuzzlePole_Basic_ME.png" id="1_gfpf7"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("1_gfpf7")

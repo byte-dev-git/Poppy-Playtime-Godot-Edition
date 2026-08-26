@@ -1,0 +1,31 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WhiteRope/T_WhiteRope_BC.T_WhiteRope_BC",
+    "T_WhiteRope_BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WhiteRope/T_WhiteRope_BC.T_WhiteRope_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WhiteRope/T_Rope_N.T_Rope_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WhiteRope/T_Rope_N.T_Rope_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WhiteRope/T_Rope_ORMH.T_Rope_ORMH",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WhiteRope/T_Rope_ORMH.T_Rope_ORMH"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {},
+    "Scalars": {
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BaseMetalTrim_A/T_BaseMetalTrim_A_BC.T_BaseMetalTrim_A_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BaseMetalTrim_A/T_BaseMetalTrim_A_N.T_BaseMetalTrim_A_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BaseMetalTrim_A/T_BaseMetalTrim_A_N.T_BaseMetalTrim_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BaseMetalTrim_A/T_BaseMetalTrim_A_ORM.T_BaseMetalTrim_A_ORM",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BaseMetalTrim_A/T_BaseMetalTrim_A_ORM.T_BaseMetalTrim_A_ORM",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_Dust_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_BaseMetalTrim_A_BC": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BaseMetalTrim_A/T_BaseMetalTrim_A_BC.T_BaseMetalTrim_A_BC"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 0.0,
+      "TexCoordIndex": 0.0,
+      "Roughness": 0.5,
+      "UV Channel": 0.0,
+      "Tiling Amount": 3.0,
+      "Dust Mask Opacity": 1.0,
+      "Dust Mask Power": 1.0,
+      "Dust Mask Channel Selection": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

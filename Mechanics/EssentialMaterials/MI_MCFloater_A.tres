@@ -1,0 +1,12 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://cov481ivn2pr2"]
+
+[ext_resource type="Texture2D" uid="uid://c8xpynv6lc21m" path="res://Mechanics/Models/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_BC.png" id="1_8b8mw"]
+[ext_resource type="Texture2D" uid="uid://cmnps22w3eal0" path="res://Mechanics/Models/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_N.png" id="2_sn3e4"]
+[ext_resource type="Texture2D" uid="uid://dfsxx14e5t0ay" path="res://Mechanics/Models/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_ORMK.png" id="3_qf2bi"]
+
+[resource]
+transparency = 4
+albedo_texture = ExtResource("1_8b8mw")
+orm_texture = ExtResource("3_qf2bi")
+normal_enabled = true
+normal_texture = ExtResource("2_sn3e4")

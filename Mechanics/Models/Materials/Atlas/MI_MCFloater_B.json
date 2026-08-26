@@ -1,0 +1,94 @@
+{
+  "Textures": {
+    "MultiColor Texture": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_BC_A.T_MultiColor_BC_A",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_N.T_Floaters_B_N",
+    "Detail Normal": "/Game/Materials/Resources/Textures/T_Floor_01_N.T_Floor_01_N",
+    "BC": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_BC.T_Floaters_B_BC",
+    "N": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_N.T_Floaters_B_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_ORMK.T_Floaters_B_ORMK",
+    "ORMK": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_ORMK.T_Floaters_B_ORMK",
+    "MultiRoughness": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_R_A.T_MultiColor_R_A",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_Dust_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_Floaters_B_BC": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_BC.T_Floaters_B_BC",
+    "T_Floaters_B_N": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_B/T_Floaters_B_N.T_Floaters_B_N",
+    "T_MultiColor_BC_A": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_BC_A.T_MultiColor_BC_A",
+    "T_MultiColor_R_A": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_R_A.T_MultiColor_R_A"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 0,
+    "Colors": {
+      "Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color Variation Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Color": {
+        "R": 1.2,
+        "G": 1.123527,
+        "B": 1.009653,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "UV Channel": 0.0,
+      "Tiling": 1.0,
+      "MultiColor UV Channel": 1.0,
+      "Color Intensity": 1.0,
+      "Detail Nomal Intensity": 1.0,
+      "Color Variation A Power": 1.0,
+      "Color Variation A Contrast": 1.0,
+      "Emissive Intensity": 0.0,
+      "Color Variation B Value": 1.0,
+      "Color Variation B Power": 1.0,
+      "Color Variation B Contrast": 1.0,
+      "Normal Intensity": 1.0,
+      "Roughness Contrast": 0.0,
+      "Roughness Intensity": 1.0,
+      "Saturation (S)": 1.0,
+      "Contrast (S)": 1.0,
+      "Brightness": 1.0,
+      "Color Index": 0.0,
+      "Rows": 4.0,
+      "Detail Normal UV Channel": 0.0,
+      "Detail Normal Index": 0.0,
+      "Detail Normal Rows": 2.0,
+      "Roughness Offset": 0.0,
+      "Opacity Tiling": 1.0,
+      "Shadow Casting Switch": 0.0,
+      "Roughness": 0.5,
+      "Tiling Amount": 3.0,
+      "Dust Mask Opacity": 1.0,
+      "Dust Mask Power": 1.0,
+      "Dust Mask Channel Selection": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

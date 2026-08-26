@@ -1,0 +1,72 @@
+{
+  "Textures": {
+    "ORKK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_ORKK.T_WallPanels_A_ORKK",
+    "N": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_N.T_WallPanels_A_N",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_MSK.T_WallPanels_A_MSK",
+    "T_WallPanels_A_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_MSK.T_WallPanels_A_MSK",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_N.T_WallPanels_A_N",
+    "T_WallPanels_A_N": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_N.T_WallPanels_A_N",
+    "T_WallPanels_A_ORKK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_ORKK.T_WallPanels_A_ORKK"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color": {
+        "R": 0.4,
+        "G": 0.389646,
+        "B": 0.340233,
+        "A": 1.0,
+        "Hex": "AAA89E"
+      }
+    },
+    "Scalars": {
+      "TexCoordIndex": 0.0,
+      "Tiling": 2.0,
+      "U-Offset": 0.0,
+      "V-Offset": 0.0,
+      "BC_Tiling": 2.0,
+      "SpecularStrength (S)": 0.5,
+      "Max AO (S)": 1.0,
+      "Min AO (S)": 0.0,
+      "Normal Soften (S)": 0.0,
+      "RoughnessMin (S)": 0.0,
+      "RoughnessMax (S)": 1.0,
+      "Saturation (S)": 1.0,
+      "Contrast (S)": 1.0,
+      "Roughness": 0.58,
+      "Contrast": -0.279333,
+      "Power": 0.56,
+      "UV Channel": 0.0,
+      "Tiling Amount": 1.0,
+      "Mask Intensity": 1.3,
+      "U Offset": 0.0,
+      "V Offset": 0.0,
+      "Height Contrast": 0.0,
+      "Normal Intensity": 0.0,
+      "Saturation": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

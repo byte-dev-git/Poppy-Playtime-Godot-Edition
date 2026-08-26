@@ -1,0 +1,31 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_BC.T_BasePlasticTrim_A_BC",
+    "T_BasePlasticTrim_A_BC": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_BC.T_BasePlasticTrim_A_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_N.T_BasePlasticTrim_A_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_N.T_BasePlasticTrim_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_ORMK.T_BasePlasticTrim_A_ORMK",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_ORMK.T_BasePlasticTrim_A_ORMK"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {},
+    "Scalars": {
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

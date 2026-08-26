@@ -1,0 +1,39 @@
+{
+  "Textures": {
+    "PM_Diffuse": "/WorldAssetsChapters/Glowby/MaterialInstance/BlackLight/Texture/Level09/T_LilyHairMarker_MSK.T_LilyHairMarker_MSK",
+    "Puzzle_Texture": "/WorldAssetsChapters/Glowby/MaterialInstance/BlackLight/Texture/Level09/T_LilyHairMarker_MSK.T_LilyHairMarker_MSK",
+    "Noise Texture Overlay": "/Game/FluidNinjaLive/Core/Assets/T_NoiseTemplate2_blur.T_NoiseTemplate2_blur",
+    "T_NoiseTemplate2_blur": "/Game/FluidNinjaLive/Core/Assets/T_NoiseTemplate2_blur.T_NoiseTemplate2_blur"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 0,
+    "Colors": {
+      "Glow Color": {
+        "R": 0.349653,
+        "G": 0.0,
+        "B": 0.453125,
+        "A": 1.0,
+        "Hex": "A000B4"
+      }
+    },
+    "Scalars": {
+      "Rows": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

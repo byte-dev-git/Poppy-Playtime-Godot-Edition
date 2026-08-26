@@ -1,0 +1,44 @@
+{
+  "Textures": {
+    "BC (T2d)": "/WorldAssetsChapters/Carriables-Receivers/Battery/Meshes/T_BatteryFrame_BC.T_BatteryFrame_BC",
+    "T_BatteryFrame_BC": "/WorldAssetsChapters/Carriables-Receivers/Battery/Meshes/T_BatteryFrame_BC.T_BatteryFrame_BC",
+    "PM_Normals": "/WorldAssetsChapters/Carriables-Receivers/Battery/Meshes/T_BatteryFrame_N.T_BatteryFrame_N",
+    "Normal (T2d)": "/WorldAssetsChapters/Carriables-Receivers/Battery/Meshes/T_BatteryFrame_N.T_BatteryFrame_N",
+    "PM_SpecularMasks": "/WorldAssetsChapters/Carriables-Receivers/Battery/Meshes/T_BatteryFrame_ORMA.T_BatteryFrame_ORMA",
+    "ORM (T2d)": "/WorldAssetsChapters/Carriables-Receivers/Battery/Meshes/T_BatteryFrame_ORMA.T_BatteryFrame_ORMA"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.091495,
+        "G": 0.2,
+        "B": 0.039003,
+        "A": 1.0,
+        "Hex": "557C37"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 10.0,
+      "Emissive Strength": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Emissive in Alpha (ORM)": true
+    },
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

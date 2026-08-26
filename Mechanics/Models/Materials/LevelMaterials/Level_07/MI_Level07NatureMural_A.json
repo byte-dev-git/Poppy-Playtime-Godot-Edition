@@ -1,0 +1,150 @@
+{
+  "Textures": {
+    "Opacity BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_NatureAtlas_A_BCA.T_NatureAtlas_A_BCA",
+    "BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_NatureMural_A_BC.T_NatureMural_A_BC",
+    "N": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMural_A_N.T_WallMural_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMuralsUnderlayers_A/T_WallMuralsUnderlayer_ORMH.T_WallMuralsUnderlayer_ORMH",
+    "ORMH": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMural_A_ORMH.T_WallMural_A_ORMH",
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMuralsUnderlayers_A/T_WallMuralsUnderlayer_A_BC.T_WallMuralsUnderlayer_A_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMuralsUnderlayers_A/T_WallMuralsUnderlayer_A_N.T_WallMuralsUnderlayer_A_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMuralsUnderlayers_A/T_WallMuralsUnderlayer_A_N.T_WallMuralsUnderlayer_A_N",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMuralsUnderlayers_A/T_WallMuralsUnderlayer_ORMH.T_WallMuralsUnderlayer_ORMH",
+    "Edge MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMural_A_MSK.T_WallMural_A_MSK",
+    "Edge Detail Normal": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMural_Peeling_N.T_WallMural_Peeling_N",
+    "Second Edge ORMSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMuralRippedEdge_ORMSK.T_WallMuralRippedEdge_ORMSK",
+    "Second Edge Normal": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMuralRippedPaper_N.T_WallMuralRippedPaper_N",
+    "Second Edge BC": "/Game/Materials/Resources/Textures/T_Concrete_Patch02_ORM.T_Concrete_Patch02_ORM",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_MSK.T_WallPanels_A_MSK",
+    "T_WallPanels_A_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallPanels_A/T_WallPanels_A_MSK.T_WallPanels_A_MSK",
+    "T_WallMural_A_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMural_A_MSK.T_WallMural_A_MSK",
+    "T_NatureAtlas_A_BCA": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_NatureAtlas_A_BCA.T_NatureAtlas_A_BCA",
+    "T_NatureMural_A_BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_NatureMural_A_BC.T_NatureMural_A_BC",
+    "T_WallMural_A_N": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMurals_A/T_WallMural_A_N.T_WallMural_A_N",
+    "T_WallMuralsUnderlayer_A_BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/WallMuralsUnderlayers_A/T_WallMuralsUnderlayer_A_BC.T_WallMuralsUnderlayer_A_BC"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "BC Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Opacity BC Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Tint": {
+        "R": 0.95,
+        "G": 0.95,
+        "B": 0.95,
+        "A": 1.0,
+        "Hex": "FAFAFA"
+      },
+      "Color": {
+        "R": 0.7,
+        "G": 0.533326,
+        "B": 0.337771,
+        "A": 1.0,
+        "Hex": "DAC19D"
+      },
+      "Edge Tint": {
+        "R": 0.955973,
+        "G": 0.381326,
+        "B": 0.191202,
+        "A": 1.0,
+        "Hex": "FAA679"
+      },
+      "Second Edge Tint": {
+        "R": 0.275,
+        "G": 0.214877,
+        "B": 0.13916,
+        "A": 1.0,
+        "Hex": "8F8068"
+      }
+    },
+    "Scalars": {
+      "Opacity Tiling": 0.0,
+      "Opacity U Offset": 0.0,
+      "Opacity V Offset": 0.0,
+      "TexCoordIndex": 0.0,
+      "Tiling": 2.0,
+      "U-Offset": 0.0,
+      "V-Offset": 0.0,
+      "Opacity TexCoordIndex": 1.0,
+      "Rougness Offset": -0.05,
+      "BC Tiling": 1.0,
+      "Normal Intensity": 0.0,
+      "Roughness Contrast": 0.0,
+      "Roughness Intensity": 1.75,
+      "Saturation (S)": 0.7,
+      "Contrast (S)": 1.75,
+      "Brightness": 0.75,
+      "Opacity BC Brightness": 1.0,
+      "Opacity BC Saturation": 1.0,
+      "BC U-Offset": 0.0,
+      "BC V-Offset": 0.0,
+      "Emissive Intensity": 0.0,
+      "Max AO (S)": 1.0,
+      "Min AO (S)": 0.0,
+      "Normal Soften (S)": 0.0,
+      "RoughnessMin (S)": 0.65,
+      "RoughnessMax (S)": 1.0,
+      "SpecularStrength (S)": 0.5,
+      "Roughness": 0.6,
+      "UV Channel": 0.0,
+      "Edge Mask Tiling Amount": 2.0,
+      "Edge Mask Contrast": 0.2,
+      "Gradient Falloff": 0.7,
+      "Edge Transition": 0.05,
+      "Edge Saturation": 1.2,
+      "Edge Brightness": 1.0,
+      "Edge DN Tiling Amount": 1.0,
+      "Edge DN Intensity": -0.5,
+      "Second Edge Contrast": 15.0,
+      "Second Edge Brightness": 1.0,
+      "Second Edge N Intensity": 0.00927,
+      "Second Edge Tiling Amount": 2.0,
+      "Second Edge Roughness Intensity": 1.0,
+      "Saturation Mask Intensity": 1.75,
+      "Contrast": 0.0,
+      "Power": 0.4,
+      "Tiling Amount": 2.0,
+      "Mask Intensity": 1.33,
+      "U Offset": 0.0,
+      "V Offset": 0.0,
+      "Height Contrast": 0.0,
+      "Saturation": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Invert?": false
+    },
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

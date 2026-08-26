@@ -1,0 +1,12 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://de74yq45g0qc8"]
+
+[ext_resource type="Texture2D" uid="uid://8v3g82mqhd8u" path="res://Mechanics/Models/Materials/Tileables/Textures/PaintedMetal_A/T_PaintedMetal_A_BC.png" id="1_bgc6c"]
+[ext_resource type="Texture2D" uid="uid://0ariq8y803iq" path="res://Mechanics/Models/Materials/Tileables/Textures/PaintedMetal_A/T_PaintedMetal_A_N.png" id="2_eybg5"]
+[ext_resource type="Texture2D" uid="uid://cdcaq8st44fs6" path="res://Mechanics/Models/Materials/Tileables/Textures/PaintedMetal_A/T_PaintedMetal_A_ORMK.png" id="3_1k3fs"]
+
+[resource]
+albedo_color = Color(0, 0, 1, 1)
+albedo_texture = ExtResource("1_bgc6c")
+orm_texture = ExtResource("3_1k3fs")
+normal_enabled = true
+normal_texture = ExtResource("2_eybg5")

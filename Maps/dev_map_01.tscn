@@ -1,0 +1,391 @@
+[gd_scene format=3 uid="uid://bmsoq3f07mu73"]
+
+[ext_resource type="PackedScene" uid="uid://bqnno40vlx5ty" path="res://Character/bp_player.tscn" id="1_npfu7"]
+[ext_resource type="Script" uid="uid://cxs38jvvy5ewa" path="res://Maps/Scripts/dev_map_01.gd" id="1_tp8b5"]
+[ext_resource type="Texture2D" uid="uid://b3ycywo0hbigd" path="res://Assets/SkyTextures/AllSkyFree_Sky_ColdSunset_Equirect.png" id="1_v71cu"]
+[ext_resource type="Material" uid="uid://jvqcw67hchds" path="res://Assets/Materials/M_PrototypeMaterial_White.tres" id="3_npfu7"]
+[ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_blur_stage.tres" id="4_sjux2"]
+[ext_resource type="Script" uid="uid://cngssfjmje6wb" path="res://Character/Scripts/footsteps.gd" id="4_sx4aj"]
+[ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_neighbor_max_stage.tres" id="5_jvalg"]
+[ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_overlay_stage.tres" id="6_6yns3"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/sphynx_motion_blur_toolkit/pre_blur_processing/shader_stages/pre_blur_processing_stage.tres" id="7_pqyyt"]
+[ext_resource type="Script" uid="uid://c5jewnyvlca7j" path="res://addons/sphynx_motion_blur_toolkit/guertin/guertin_motion_blur.gd" id="8_q3657"]
+[ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_tile_max_x_stage.tres" id="9_53417"]
+[ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_tile_max_y_stage.tres" id="10_k2dvm"]
+[ext_resource type="PackedScene" uid="uid://cv35sq7lun3l4" path="res://Mechanics/HandScanner/hand_scanner.tscn" id="14_jvalg"]
+[ext_resource type="PackedScene" uid="uid://dyrh64stcydcg" path="res://Mechanics/Battery/battery_socket.tscn" id="17_pqyyt"]
+[ext_resource type="PackedScene" uid="uid://q0rj6x7jmfrv" path="res://Mechanics/Battery/battery.tscn" id="19_6yns3"]
+[ext_resource type="PackedScene" uid="uid://y1t83q45yas6" path="res://Mechanics/Limon/limon.tscn" id="21_53417"]
+[ext_resource type="PackedScene" uid="uid://dfu8k4174qawm" path="res://Mechanics/PullableBox/pullable_box.tscn" id="21_k2dvm"]
+[ext_resource type="PackedScene" uid="uid://dja4jlp8rv8h3" path="res://Mechanics/PowerPuzzle/power_outlet.tscn" id="21_q3657"]
+[ext_resource type="PackedScene" uid="uid://c4ltoupaua8su" path="res://Mechanics/Grabhandle/grab_handle.tscn" id="23_k2dvm"]
+[ext_resource type="PackedScene" uid="uid://d4iwnira8euel" path="res://Mechanics/PowerPuzzle/power_receiver.tscn" id="24_mgak1"]
+[ext_resource type="PackedScene" uid="uid://d3dhmrras1kv1" path="res://Mechanics/PowerPuzzle/power_pole.tscn" id="25_q3yp2"]
+
+[sub_resource type="CompressedTexture3D" id="CompressedTexture3D_q3657"]
+load_path = "res://.godot/imported/VT_Level1-8.hdr-d10dea292a0b5ed9b118f3cdc85abbb4.ctex3d"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a46gh"]
+panorama = ExtResource("1_v71cu")
+
+[sub_resource type="Sky" id="Sky_yufqg"]
+sky_material = SubResource("PanoramaSkyMaterial_a46gh")
+
+[sub_resource type="Environment" id="Environment_q6y5p"]
+background_mode = 2
+sky = SubResource("Sky_yufqg")
+ssr_enabled = true
+ssr_max_steps = 512
+ssr_fade_in = 1e-05
+ssr_fade_out = 1e-05
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 0.51
+glow_bloom = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.9999997, 0.9310378, 0.9088107, 1)
+volumetric_fog_emission = Color(0.19434929, 0.19434926, 0.19434926, 1)
+volumetric_fog_sky_affect = 0.705
+adjustment_enabled = true
+adjustment_brightness = 1.07
+adjustment_contrast = 1.25
+adjustment_saturation = 0.9
+adjustment_color_correction = SubResource("CompressedTexture3D_q3657")
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_a46gh"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = true
+needs_normal_roughness = false
+script = ExtResource("8_q3657")
+tile_size = 35
+intensity = 0.85
+shader_stages/blur_stage = ExtResource("4_sjux2")
+shader_stages/overlay_stage = ExtResource("6_6yns3")
+shader_stages/tile_max_x_stage = ExtResource("9_53417")
+shader_stages/tile_max_y_stage = ExtResource("10_k2dvm")
+shader_stages/neighbor_max_stage = ExtResource("5_jvalg")
+shader_stages/pre_blur_processor_stage = ExtResource("7_pqyyt")
+metadata/_custom_type_script = "uid://c5jewnyvlca7j"
+
+[sub_resource type="Compositor" id="Compositor_yufqg"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_a46gh")])
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a46gh"]
+size = Vector2(3.29, 2.97)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53417"]
+albedo_color = Color(0, 0.2784314, 0.6745098, 1)
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53417"]
+size = Vector3(3.29, 0.001, 2.97)
+
+[node name="DevMap_01" type="Node3D" unique_id=1188970045]
+script = ExtResource("1_tp8b5")
+
+[node name="BP_Player" parent="." unique_id=615822354 instance=ExtResource("1_npfu7")]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0.168, 0, 0.191)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=825152818]
+environment = SubResource("Environment_q6y5p")
+compositor = SubResource("Compositor_yufqg")
+
+[node name="CSG" type="Node3D" parent="." unique_id=1398396850]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG" unique_id=1563396255]
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(23.112305, 0.095703125, 26.88379)
+material = ExtResource("3_npfu7")
+
+[node name="Footsteps" type="Node" parent="CSG/CSGBox3D" unique_id=802145962]
+script = ExtResource("4_sx4aj")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSG/CSGBox3D" unique_id=696099373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7154541, 0.032472193, -5.5265503)
+operation = 2
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2.661377, 0.16259766, 2.8204346)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CSG/CSGBox3D" unique_id=1200496624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7873043, 0.01888913, -5.569152)
+mesh = SubResource("PlaneMesh_a46gh")
+surface_material_override/0 = SubResource("StandardMaterial3D_53417")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSG/CSGBox3D/MeshInstance3D" unique_id=817689241]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSG/CSGBox3D/MeshInstance3D/StaticBody3D" unique_id=436780820]
+shape = SubResource("BoxShape3D_53417")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSG" unique_id=1733584144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.71221, 0, 0)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(10.587524, 0.095703125, 11.87207)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSG" unique_id=71917146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.570036, -1.9704947, -8.65795)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(10.587524, 0.095703125, 11.87207)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSG" unique_id=730319343]
+transform = Transform3D(0.63058907, 0, -0.7761169, 0, 1, 0, 0.7761169, 0, 0.63058907, -5.1042056, 1.4540826, -8.626425)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1.9724121, 0.41503906, 1.7539063)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSG" unique_id=1162489452]
+transform = Transform3D(0.63058907, 0, -0.7761169, 0, 1, 0, 0.7761169, 0, 0.63058907, -5.8490105, 0.8246881, -8.021276)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1.9724121, 1.6738281, 0.1842041)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSG" unique_id=2073202504]
+transform = Transform3D(0.63058907, 0, -0.7761169, 0, 1, 0, 0.7761169, 0, 0.63058907, -4.360214, 0.8246881, -9.230911)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1.9724121, 1.6738281, 0.1842041)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSG" unique_id=866648342]
+transform = Transform3D(0.7761169, 0, 0.6305891, 0, 1, 0, -0.6305891, 0, 0.7761169, -5.778441, 0.8246881, -9.469112)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2.0771484, 1.6738281, 0.1842041)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSG" unique_id=2068364532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8707808, 13.308886)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(23.112305, 2.033, 0.37841797)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSG" unique_id=1181193790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37685847, 2.1724098, -13.393616)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(23.112305, 4.6372404, 0.37841797)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSG" unique_id=1673889456]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.297351, 1.6149722, -0.042265523)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(28.00586, 3.5213828, 0.37841797)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSG/CSGBox3D5" unique_id=1348920565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7850906, 0, -0.058449745)
+operation = 2
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(4.869812, 3.9416504, 1.6937256)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSG/CSGBox3D5" unique_id=767383952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3619995, 0.07620239, 0.1302967)
+operation = 2
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(0.65641785, 1.1122437, 0.8694458)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSG/CSGBox3D5" unique_id=1961712255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8957481, 0.07620239, 0.1302967)
+operation = 2
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(0.65641785, 1.1122437, 0.8694458)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSG/CSGBox3D5" unique_id=1739717479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.128594, 0, -0.05255127)
+operation = 2
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(4.869812, 3.753662, 1.6937256)
+material = ExtResource("3_npfu7")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSG" unique_id=742255711]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.452327, 0.8707808, -0.042264353)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(27.283203, 2.033, 0.37841797)
+material = ExtResource("3_npfu7")
+
+[node name="Light" type="Node3D" parent="." unique_id=707266708]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Light" unique_id=125903696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.842451, 3.6466413, 0)
+omni_range = 18.279278
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Light" unique_id=245049538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26739788, 3.6466413, -7.8905544)
+omni_range = 18.279278
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Light" unique_id=1506932840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12720609, 3.6466413, 7.411333)
+omni_range = 18.279278
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Light" unique_id=347315250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.175293, 0, 2.7262573)
+update_mode = 1
+size = Vector3(60.750977, 20, 39.00525)
+
+[node name="Mechanics" type="Node3D" parent="." unique_id=1630585240]
+
+[node name="Battery" parent="Mechanics" unique_id=1086128613 instance=ExtResource("19_6yns3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6139245, 0.77016205, 0.8715081)
+
+[node name="Battery2" parent="Mechanics" unique_id=1019047718 instance=ExtResource("19_6yns3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.3651237, 2.4323897, 4.2350593)
+
+[node name="HandScanner2" parent="Mechanics" unique_id=1688616220 instance=ExtResource("14_jvalg")]
+transform = Transform3D(-0.7831738, 0, -0.6218028, 0, 1, 0, 0.6218028, 0, -0.7831738, -6.4129577, 0.72419226, -9.062747)
+is_left = false
+
+[node name="HandScanner5" parent="Mechanics" unique_id=721537264 instance=ExtResource("14_jvalg")]
+transform = Transform3D(-0.7831738, 0, -0.6218028, 0, 1, 0, 0.6218028, 0, -0.7831738, -5.9319963, 0.72419226, -9.444608)
+is_left = false
+hand = 1
+hand_color = Color(1, 1, 1, 1)
+
+[node name="HandScanner6" parent="Mechanics" unique_id=1601349106 instance=ExtResource("14_jvalg")]
+transform = Transform3D(-0.7831738, 0, -0.6218028, 0, 1, 0, 0.6218028, 0, -0.7831738, -5.437255, 0.72419226, -9.837408)
+
+[node name="GrabHandle" parent="Mechanics" unique_id=1444149643 instance=ExtResource("23_k2dvm")]
+transform = Transform3D(-1, 4.371139e-08, 4.3711385e-08, -4.371139e-08, -4.371139e-08, -1, -4.3711385e-08, -1, 4.3711392e-08, 8.398085, 3.5774431, -13.206224)
+outline = true
+
+[node name="GrabHandle4" parent="Mechanics" unique_id=1145508518 instance=ExtResource("23_k2dvm")]
+transform = Transform3D(-1, 4.371139e-08, 4.3711385e-08, -4.371139e-08, -4.371139e-08, -1, -4.3711385e-08, -1, 4.3711392e-08, 2.691947, 3.5774431, -13.206224)
+
+[node name="GrabHandle3" parent="Mechanics" unique_id=1008657757 instance=ExtResource("23_k2dvm")]
+transform = Transform3D(-4.371139e-08, -2.9802322e-08, -1.0000001, -2.6342712e-15, 1.0000001, -2.9802322e-08, 1, 8.5791446e-16, -4.371139e-08, -17.0197, 6.3089743, -9.006999)
+outline = true
+
+[node name="GrabHandle2" parent="Mechanics" unique_id=1908067480 instance=ExtResource("23_k2dvm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16.984264, 6.3089743, 1.5327673)
+swing_type = 1
+
+[node name="BatterySocket" parent="Mechanics" unique_id=1828537001 instance=ExtResource("17_pqyyt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.087413, 1.0696733, -2.3805165)
+start_with_battery = false
+removable = false
+
+[node name="BatterySocket2" parent="Mechanics" unique_id=538138604 instance=ExtResource("17_pqyyt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.087413, 1.0696733, -3.9142652)
+start_with_battery = false
+enabled = false
+
+[node name="PowerOutlet" parent="Mechanics" unique_id=1373376736 instance=ExtResource("21_q3657")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.127399, 1.0852453, 5.8288717)
+
+[node name="power_receiver" parent="Mechanics" unique_id=414769337 node_paths=PackedStringArray("power_poles") instance=ExtResource("24_mgak1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -26.719086, 1.1639383, 5.938492)
+power_poles = [NodePath("../power_pole"), NodePath("../power_pole2")]
+
+[node name="power_pole" parent="Mechanics" unique_id=2125900006 instance=ExtResource("25_q3yp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.097805, 0.047851842, 5.78022)
+
+[node name="power_pole2" parent="Mechanics" unique_id=71277227 instance=ExtResource("25_q3yp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.835127, 0.047851842, 3.0933766)
+
+[node name="PickableObject" parent="Mechanics" unique_id=377518038 instance=ExtResource("21_53417")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6958, 0.13129185, 0.111177325)
+
+[node name="PickableObject2" parent="Mechanics" unique_id=2045114663 instance=ExtResource("21_53417")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.371582, 0.13129185, 0.82835937)
+
+[node name="PullableBox" parent="Mechanics" unique_id=1457371648 instance=ExtResource("21_k2dvm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.371421, 0.054851037, 5.1684313)
+mass = 150.0
+gravity_scale = 1.5
+linear_damp = 3.0
+angular_damp = 1.0
+box_size = 3
+color = Color(1, 0.5254902, 0, 1)
+pull_force = 20.0
+
+[node name="PullableBox4" parent="Mechanics" unique_id=1701069840 instance=ExtResource("21_k2dvm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.4473548, 0.054851037, 5.1684313)
+mass = 350.0
+gravity_scale = 1.5
+linear_damp = 3.0
+angular_damp = 1.0
+max_speed = 8.0
+
+[node name="PullableBox6" parent="Mechanics" unique_id=1053450918 instance=ExtResource("21_k2dvm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.6691165, 0.054851037, 5.1684313)
+gravity_scale = 1.5
+linear_damp = 3.0
+angular_damp = 1.0
+box_size = 1
+color = Color(0, 0.5686275, 1, 1)
+pull_force = 10.0
+max_speed = 6.0
+
+[node name="PullableBox2" parent="Mechanics" unique_id=174589702 instance=ExtResource("21_k2dvm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.1482038, 0.054851037, 6.7537155)
+mass = 50.0
+gravity_scale = 1.5
+linear_damp = 3.0
+angular_damp = 1.0
+box_size = 2
+color = Color(0, 0.5411765, 1, 1)
+pull_force = 25.0
+max_speed = 12.0
+
+[node name="PullableBox5" parent="Mechanics" unique_id=887075089 instance=ExtResource("21_k2dvm")]
+transform = Transform3D(-0.9771741, 0, 0.21243998, 0, 1, 0, -0.21243998, 0, -0.9771741, 4.021525, 0.7716658, 6.819897)
+mass = 50.0
+gravity_scale = 1.5
+linear_damp = 3.0
+angular_damp = 1.0
+box_size = 2
+color = Color(0.99607843, 0, 0, 1)
+pull_force = 25.0
+max_speed = 12.0
+
+[node name="PullableBox3" parent="Mechanics" unique_id=256533479 instance=ExtResource("21_k2dvm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9959483, 0.054851037, 6.8886704)
+mass = 50.0
+gravity_scale = 1.5
+linear_damp = 3.0
+angular_damp = 1.0
+box_size = 2
+color = Color(1, 0.5254902, 0, 1)
+pull_force = 25.0
+max_speed = 12.0
+
+[connection signal="scan_complete" from="Mechanics/HandScanner2" to="." method="_on_hand_scanner_2_scan_complete"]

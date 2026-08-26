@@ -1,0 +1,49 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/GeneralPlastic_A/T_GeneralPlastic_BC.T_GeneralPlastic_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/GeneralPlastic_A/T_GeneralPlastic_N.T_GeneralPlastic_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/GeneralPlastic_A/T_GeneralPlastic_N.T_GeneralPlastic_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/GeneralPlastic_A/T_GeneralPlastic_ORMK.T_GeneralPlastic_ORMK",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/GeneralPlastic_A/T_GeneralPlastic_ORMK.T_GeneralPlastic_ORMK",
+    "T_GeneralPlastic_BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/GeneralPlastic_A/T_GeneralPlastic_BC.T_GeneralPlastic_BC"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 0.0,
+      "TexCoordIndex": 0.0,
+      "Tiling": 2.0,
+      "U-Offset": 0.0,
+      "V-Offset": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "PhysMaterial": {
+        "ObjectName": "PhysicalMaterial'PM_Plastic'",
+        "ObjectPath": "/Game/Materials/Physics/PM_Plastic.0"
+      },
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "Textures": {
+    "Glass Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Glass/T_Glass_C_MSK.T_Glass_C_MSK",
+    "T_Glass_C_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Glass/T_Glass_C_MSK.T_Glass_C_MSK"
+  },
+  "Parameters": {
+    "BlendMode": 2,
+    "ShadingModel": 0,
+    "Colors": {
+      "Tint": {
+        "R": 0.836585,
+        "G": 0.918888,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "ECF6FF"
+      },
+      "Dirt Color": {
+        "R": 1.0,
+        "G": 0.862792,
+        "B": 0.60857,
+        "A": 1.0,
+        "Hex": "FFEFCD"
+      }
+    },
+    "Scalars": {
+      "Rows": 2.0,
+      "Tiling": 2.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_TranslucentGreyTransmittance",
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": true,
+    "IsNull": false
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "Textures": {
+    "MultiColor Texture": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_BC_A.T_MultiColor_BC_A",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWallFoldsAtlas_A.T_PaddedWallFoldsAtlas_A",
+    "Detail Normal": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWallFoldsAtlas_A.T_PaddedWallFoldsAtlas_A",
+    "BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWall_A_BC.T_PaddedWall_A_BC",
+    "N": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWall_A_N.T_PaddedWall_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWall_A_ORMK.T_PaddedWall_A_ORMK",
+    "ORMK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWall_A_ORMK.T_PaddedWall_A_ORMK",
+    "MultiRoughness": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_R_A.T_MultiColor_R_A",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Stains_MSK.T_Stains_MSK",
+    "T_Dust_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_PaddedWall_A_BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWall_A_BC.T_PaddedWall_A_BC",
+    "T_PaddedWall_A_N": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/PaddedWall_A/T_PaddedWall_A_N.T_PaddedWall_A_N",
+    "T_MultiColor_BC_A": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_BC_A.T_MultiColor_BC_A",
+    "T_MultiColor_R_A": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_R_A.T_MultiColor_R_A",
+    "T_Stains_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Stains_MSK.T_Stains_MSK"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color Variation Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Color": {
+        "R": 0.921582,
+        "G": 0.879622,
+        "B": 0.806952,
+        "A": 1.0,
+        "Hex": "F6F1E8"
+      },
+      "Edge Color": {
+        "R": 0.791298,
+        "G": 0.658375,
+        "B": 0.508881,
+        "A": 1.0,
+        "Hex": "E6D4BD"
+      }
+    },
+    "Scalars": {
+      "UV Channel": 0.0,
+      "Tiling": 2.0,
+      "MultiColor UV Channel": 1.0,
+      "Color Intensity": 1.0,
+      "Detail Nomal Intensity": 1.0,
+      "Color Variation A Power": 1.0,
+      "Color Variation A Contrast": 1.0,
+      "Emissive Intensity": 0.0,
+      "Color Variation B Value": 1.0,
+      "Color Variation B Power": 1.0,
+      "Color Variation B Contrast": 1.0,
+      "Normal Intensity": 1.0,
+      "Roughness Contrast": 0.0,
+      "Roughness Intensity": 1.0,
+      "Saturation (S)": 1.0,
+      "Contrast (S)": 2.0,
+      "Brightness": 1.0,
+      "Color Index": 0.0,
+      "Rows": 4.0,
+      "Detail Normal UV Channel": 1.0,
+      "Detail Normal Index": 0.0,
+      "Detail Normal Rows": 2.0,
+      "Roughness Offset": 0.0,
+      "Opacity Tiling": 1.0,
+      "Shadow Casting Switch": 1.0,
+      "Roughness": 0.5,
+      "Tiling Amount": 2.0,
+      "Mask Intensity": 1.0,
+      "Gradient Falloff": 0.33,
+      "Edge Transition": 0.66,
+      "Edge Saturation": 1.0,
+      "Edge Brightness": 0.79,
+      "Mask Contrast": 0.0,
+      "Mask Power": 1.0,
+      "Edge Contrast": 0.17,
+      "Edge Opacity": 1.0,
+      "Edge Power": 0.0,
+      "Opacity": 1.0,
+      "Dust Mask Opacity": 1.0,
+      "Dust Mask Power": 1.0,
+      "Dust Mask Channel Selection": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Use Detail Normal?": true,
+      "Use Color Variation": true
+    },
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

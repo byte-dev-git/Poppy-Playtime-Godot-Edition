@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dnouy1atsu7ki"]
+
+[ext_resource type="Script" uid="uid://cn6khsaidx3w5" path="res://Mechanics/player_height_ref.gd" id="1_4jqo1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y1mf1"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37ryr"]
+albedo_color = Color(1.0000322, 0.8583247, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4jqo1"]
+radius = 0.4
+height = 1.0
+
+[node name="PlayerHeightRef" type="Node3D" unique_id=152060713]
+script = ExtResource("1_4jqo1")
+
+[node name="StandingRef" type="MeshInstance3D" parent="." unique_id=1036329555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89998686, 0)
+mesh = SubResource("CapsuleMesh_y1mf1")
+surface_material_override/0 = SubResource("StandardMaterial3D_37ryr")
+
+[node name="CrouchingRef" type="MeshInstance3D" parent="." unique_id=1054578779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_4jqo1")
+surface_material_override/0 = SubResource("StandardMaterial3D_37ryr")

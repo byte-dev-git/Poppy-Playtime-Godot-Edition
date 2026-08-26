@@ -1,0 +1,17 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://ll6ylwf40r71"]
+
+[ext_resource type="Texture2D" uid="uid://dfhws6cyllkdy" path="res://Mechanics/Models/SwingHandles/ClimbHandle/Materials/Textures/T_GrapHandle_BC.png" id="1_4mk6l"]
+[ext_resource type="Texture2D" uid="uid://chm3evof81pgs" path="res://Mechanics/Models/SwingHandles/ClimbHandle/Materials/Textures/T_GrapHandle_N.png" id="2_kt3jf"]
+[ext_resource type="Texture2D" uid="uid://bxt26dfyl43xd" path="res://Mechanics/Models/SwingHandles/ClimbHandle/Materials/Textures/T_GrapHandle_ORM.png" id="3_sys34"]
+
+[resource]
+albedo_texture = ExtResource("1_4mk6l")
+orm_texture = ExtResource("3_sys34")
+normal_enabled = true
+normal_texture = ExtResource("2_kt3jf")
+ao_enabled = true
+ao_light_affect = 1.0
+backlight_enabled = true
+backlight = Color(0.65012825, 0.6501283, 0.65012825, 1)
+stencil_flags = 2
+stencil_outline_thickness = 0.001

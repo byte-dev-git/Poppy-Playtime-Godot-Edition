@@ -1,0 +1,170 @@
+{
+  "Textures": {
+    "MultiColor Texture": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_BC_A.T_MultiColor_BC_A",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_N.T_Floaters_A_N",
+    "Detail Normal": "/Game/Materials/Resources/Textures/T_Floor_01_N.T_Floor_01_N",
+    "BC": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_BC.T_Floaters_A_BC",
+    "N": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_N.T_Floaters_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_ORMK.T_Floaters_A_ORMK",
+    "ORMK": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_ORMK.T_Floaters_A_ORMK",
+    "MultiRoughness": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_R_A.T_MultiColor_R_A",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "TriplanarGrungeMask": "/Game/ch5_pro/VFX/Environment/StaticBreakables/Textures/T_Grime_01_comp.T_Grime_01_comp",
+    "2ndTriplanarGrungeMask": "/Game/ch5_pro/VFX/Environment/StaticBreakables/Textures/T_Grime_02_comp.T_Grime_02_comp",
+    "NoiseMask": "/Game/ch5_pro/VFX/Environment/StaticBreakables/Textures/T_Noise_Comp_02.T_Noise_Comp_02",
+    "OverallDamageMask": "/Game/ch5_pro/VFX/Environment/StaticBreakables/Textures/T_grime_blend_01.T_grime_blend_01",
+    "T_Dust_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_Floaters_A_BC": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_BC.T_Floaters_A_BC",
+    "T_Floaters_A_N": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/Floaters_A/T_Floaters_A_N.T_Floaters_A_N",
+    "T_MultiColor_BC_A": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_BC_A.T_MultiColor_BC_A",
+    "T_MultiColor_R_A": "/Game/ch5_pro/Environment/Materials/Atlas/Textures/MultiColor/T_MultiColor_R_A.T_MultiColor_R_A"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 0,
+    "Colors": {
+      "Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color Variation Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Color": {
+        "R": 1.2,
+        "G": 1.123527,
+        "B": 1.009653,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "GrungeColor_01": {
+        "R": 0.2,
+        "G": 0.2,
+        "B": 0.2,
+        "A": 1.0,
+        "Hex": "7C7C7C"
+      },
+      "GrungeColor_02": {
+        "R": 0.1,
+        "G": 0.1,
+        "B": 0.1,
+        "A": 1.0,
+        "Hex": "595959"
+      },
+      "ScratchColor_01": {
+        "R": 0.8,
+        "G": 0.8,
+        "B": 0.8,
+        "A": 1.0,
+        "Hex": "E8E8E8"
+      },
+      "ScratchColor_02": {
+        "R": 0.5,
+        "G": 0.5,
+        "B": 0.5,
+        "A": 1.0,
+        "Hex": "BCBCBC"
+      },
+      "DripsColor_01": {
+        "R": 0.8,
+        "G": 0.8,
+        "B": 0.8,
+        "A": 1.0,
+        "Hex": "E8E8E8"
+      },
+      "DripsColor_02": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "DamageOverlayColor": {
+        "R": 0.5,
+        "G": 0.5,
+        "B": 0.5,
+        "A": 1.0,
+        "Hex": "BCBCBC"
+      }
+    },
+    "Scalars": {
+      "UV Channel": 0.0,
+      "Tiling": 1.0,
+      "MultiColor UV Channel": 1.0,
+      "Color Intensity": 1.0,
+      "Detail Nomal Intensity": 1.0,
+      "Color Variation A Power": 1.0,
+      "Color Variation A Contrast": 1.0,
+      "Emissive Intensity": 0.0,
+      "Color Variation B Value": 1.0,
+      "Color Variation B Power": 1.0,
+      "Color Variation B Contrast": 1.0,
+      "Normal Intensity": 1.0,
+      "Roughness Contrast": 0.0,
+      "Roughness Intensity": 1.0,
+      "Saturation (S)": 1.0,
+      "Contrast (S)": 1.0,
+      "Brightness": 1.0,
+      "Color Index": 0.0,
+      "Rows": 4.0,
+      "Detail Normal UV Channel": 0.0,
+      "Detail Normal Index": 0.0,
+      "Detail Normal Rows": 2.0,
+      "Roughness Offset": 0.0,
+      "Opacity Tiling": 1.0,
+      "Shadow Casting Switch": 1.0,
+      "Roughness": 0.5,
+      "Tiling Amount": 3.0,
+      "Dust Mask Opacity": 1.0,
+      "Dust Mask Power": 1.0,
+      "Dust Mask Channel Selection": 0.0,
+      "Tiling Size": 100.0,
+      "Worldspace Offset Amount": 0.0,
+      "Blend Contrast": 0.0,
+      "NormalDistortion": 0.0,
+      "TopRotation": 0.0,
+      "2ndTriplanarTiling": 0.6,
+      "NoiseTiling": 0.333,
+      "DamageOverlayTiling": 0.3,
+      "RoughnessVariationAmount": 1.0,
+      "GrungeAmount": 1.0,
+      "ScratchAmount": 1.0,
+      "DamageAmount": 0.0,
+      "DripAmount": 1.0,
+      "GrungeStrenth": 1.0,
+      "ScratchesStrength": 1.0,
+      "DripsStrength": 0.5,
+      "DamageOverlayStrength": 1.0,
+      "1stTriplanarTiling": 0.8,
+      "ColorMult_Damaged": 1.0,
+      "RandomSeed": 0.0,
+      "CurvatureEdgeWidth": 1.0,
+      "CurvatureBrightness": 0.5,
+      "EmissiveBoost": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

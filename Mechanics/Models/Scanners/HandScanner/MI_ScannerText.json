@@ -1,0 +1,41 @@
+{
+  "Textures": {},
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "TextColor": {
+        "R": 0.430649,
+        "G": 2.820791,
+        "B": 3.0,
+        "A": 1.0,
+        "Hex": "B0FFFF"
+      }
+    },
+    "Scalars": {
+      "IdleSwitch": 1.0,
+      "IdleTextSwitch": 0.0,
+      "VerificationSwitch": 0.0,
+      "Emissive": 2.0,
+      "ErrorTextScroll": 0.0,
+      "NoPowerSwitch": 0.0,
+      "ReadyTextScroll": 0.178,
+      "ScanningTextScroll": 0.0,
+      "VerifiedTextScroll": 0.14,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": true
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/BrushedSteel_A/T_BrushedSteel_A_BC.T_BrushedSteel_A_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/BrushedSteel_A/T_BrushedSteel_A_N.T_BrushedSteel_A_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/BrushedSteel_A/T_BrushedSteel_A_N.T_BrushedSteel_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/BrushedSteel_A/T_BrushedSteel_A_ORMK.T_BrushedSteel_A_ORMK",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/BrushedSteel_A/T_BrushedSteel_A_ORMK.T_BrushedSteel_A_ORMK",
+    "T_BrushedSteel_A_BC": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/BrushedSteel_A/T_BrushedSteel_A_BC.T_BrushedSteel_A_BC"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 0.0,
+      "TexCoordIndex": 0.0,
+      "Tiling": 3.0,
+      "U-Offset": 0.0,
+      "V-Offset": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

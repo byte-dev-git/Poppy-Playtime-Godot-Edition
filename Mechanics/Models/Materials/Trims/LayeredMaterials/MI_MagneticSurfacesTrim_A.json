@@ -1,0 +1,70 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/MagneticSurfaces/T_MagneticSurfaces_BCA.T_MagneticSurfaces_BCA",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Trims/Textures/MagneticSurfaces/T_MagneticSurfaces_N.T_MagneticSurfaces_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/MagneticSurfaces/T_MagneticSurfaces_N.T_MagneticSurfaces_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Trims/Textures/MagneticSurfaces/T_MagneticSurfaces_ORMK.T_MagneticSurfaces_ORMK",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/MagneticSurfaces/T_MagneticSurfaces_ORMK.T_MagneticSurfaces_ORMK",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_Dust_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_MagneticSurfaces_BCA": "/Game/ch5_pro/Environment/Materials/Trims/Textures/MagneticSurfaces/T_MagneticSurfaces_BCA.T_MagneticSurfaces_BCA"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Reflective Color": {
+        "R": 1.0,
+        "G": 0.342965,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "FF9E00"
+      },
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 0.0,
+      "TexCoordIndex": 0.0,
+      "ExponentIn": 0.5,
+      "Reflection Strength": 33.0,
+      "Fresnel Power Strength": 1.0,
+      "Invert": 0.0,
+      "Roughness": 0.5,
+      "UV Channel": 0.0,
+      "Tiling Amount": 3.0,
+      "Dust Mask Opacity": 1.0,
+      "Dust Mask Power": 1.0,
+      "Dust Mask Channel Selection": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

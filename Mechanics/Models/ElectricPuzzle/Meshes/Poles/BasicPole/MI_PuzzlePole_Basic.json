@@ -1,0 +1,44 @@
+{
+  "Textures": {
+    "BC (T2d)": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/BasicPole/MI_PuzzlePole_Basic_BC.MI_PuzzlePole_Basic_BC",
+    "MI_PuzzlePole_Basic_BC": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/BasicPole/MI_PuzzlePole_Basic_BC.MI_PuzzlePole_Basic_BC",
+    "PM_Normals": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/BasicPole/MI_PuzzlePole_Basic_Normal.MI_PuzzlePole_Basic_Normal",
+    "Normal (T2d)": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/BasicPole/MI_PuzzlePole_Basic_Normal.MI_PuzzlePole_Basic_Normal",
+    "PM_SpecularMasks": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/BasicPole/T_PuzzlePole_Basic_ORME.T_PuzzlePole_Basic_ORME",
+    "ORM (T2d)": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/BasicPole/T_PuzzlePole_Basic_ORME.T_PuzzlePole_Basic_ORME"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 2.087436,
+        "B": 5.0,
+        "A": 5.0,
+        "Hex": "00FFFF"
+      }
+    },
+    "Scalars": {
+      "Fill 0-1": -5.0,
+      "Emissive Intensity": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Emissive in Alpha (ORM)": true
+    },
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

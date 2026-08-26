@@ -1,0 +1,76 @@
+{
+  "Textures": {
+    "BC (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/RustedPaintTrim_A/T_RustedPaintTrim_A_BC.T_RustedPaintTrim_A_BC",
+    "PM_Normals": "/Game/ch5_pro/Environment/Materials/Trims/Textures/RustedPaintTrim_A/T_RustedPaintTrim_A_N.T_RustedPaintTrim_A_N",
+    "Normal (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/RustedPaintTrim_A/T_RustedPaintTrim_A_N.T_RustedPaintTrim_A_N",
+    "PM_SpecularMasks": "/Game/ch5_pro/Environment/Materials/Trims/Textures/RustedPaintTrim_A/T_RustedPaintTrim_A_ORMK.T_RustedPaintTrim_A_ORMK",
+    "ORM (T2d)": "/Game/ch5_pro/Environment/Materials/Trims/Textures/RustedPaintTrim_A/T_RustedPaintTrim_A_ORMK.T_RustedPaintTrim_A_ORMK",
+    "Detail Normal (T2d)": "/Game/Materials/Resources/Textures/T_Placeholder_Normal.T_Placeholder_Normal",
+    "Mask": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_Dust_MSK": "/Game/ch5_pro/Environment/Materials/Tileables/Textures/Masks/T_Dust_MSK.T_Dust_MSK",
+    "T_RustedPaintTrim_A_BC": "/Game/ch5_pro/Environment/Materials/Trims/Textures/RustedPaintTrim_A/T_RustedPaintTrim_A_BC.T_RustedPaintTrim_A_BC"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Tint": {
+        "R": 0.3,
+        "G": 0.3,
+        "B": 0.3,
+        "A": 1.0,
+        "Hex": "959595"
+      },
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 0.0,
+      "TexCoordIndex": 0.0,
+      "Max AO (S)": 1.0,
+      "Min AO (S)": 0.0,
+      "Normal Soften (S)": 0.0,
+      "RoughnessMin (S)": 0.0,
+      "RoughnessMax (S)": 1.0,
+      "Saturation (S)": 0.0,
+      "Contrast (S)": 1.0,
+      "SpecularStrength (S)": 0.5,
+      "Detail Normal Intensity": 1.0,
+      "Roughness": 0.5,
+      "UV Channel": 0.0,
+      "Tiling Amount": 3.0,
+      "Dust Mask Opacity": 1.0,
+      "Dust Mask Power": 1.0,
+      "Dust Mask Channel Selection": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

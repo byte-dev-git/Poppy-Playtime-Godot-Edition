@@ -1,0 +1,16 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://ci7g5644cp7ii"]
+
+[ext_resource type="Texture2D" uid="uid://bjdkvf0wbjk51" path="res://Character/GrabpackMaterials/Textures/T_Grabpack_3_BC.png" id="1_a86tf"]
+[ext_resource type="Texture2D" uid="uid://csnk7i4t4v0ep" path="res://Character/GrabpackMaterials/Textures/T_Grabpack_3_BNT.png" id="2_5mqht"]
+[ext_resource type="Texture2D" uid="uid://cxbkad374xy6w" path="res://Character/GrabpackMaterials/Textures/T_Grabpack_3_N.png" id="3_u6fyq"]
+[ext_resource type="Texture2D" uid="uid://y4h73v5e4ou0" path="res://Character/GrabpackMaterials/Textures/T_Grabpack_3_ORM.png" id="4_lvl6j"]
+
+[resource]
+albedo_texture = ExtResource("1_a86tf")
+orm_texture = ExtResource("4_lvl6j")
+normal_enabled = true
+normal_texture = ExtResource("3_u6fyq")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("2_5mqht")
+ao_enabled = true
+ao_light_affect = 1.0

@@ -1,0 +1,29 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://sbwrb533dvh6"]
+
+[ext_resource type="Texture2D" uid="uid://ho5mybrv8fea" path="res://Mechanics/Battery/Material/Textures/T_Battery_BC.png" id="1_vicpe"]
+[ext_resource type="Texture2D" uid="uid://dn0dqajr5tq38" path="res://Mechanics/Battery/Material/Textures/T_Battery_ORMA.png" id="2_c74da"]
+[ext_resource type="Texture2D" uid="uid://by37ymobcaoqa" path="res://Mechanics/Battery/Material/Textures/T_Battery_N.png" id="3_ei2gh"]
+
+[sub_resource type="Gradient" id="Gradient_vicpe"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nc8o5"]
+gradient = SubResource("Gradient_vicpe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o60p2"]
+transparency = 4
+shading_mode = 0
+albedo_texture = ExtResource("2_c74da")
+albedo_texture_force_srgb = true
+detail_enabled = true
+detail_albedo = SubResource("GradientTexture1D_nc8o5")
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_o60p2")
+albedo_texture = ExtResource("1_vicpe")
+orm_texture = ExtResource("2_c74da")
+normal_enabled = true
+normal_texture = ExtResource("3_ei2gh")
+ao_enabled = true
+ao_light_affect = 1.0

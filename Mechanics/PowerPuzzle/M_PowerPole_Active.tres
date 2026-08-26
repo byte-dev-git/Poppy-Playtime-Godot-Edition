@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://br5y7jbtldn8g"]
+
+[ext_resource type="Texture2D" uid="uid://jsrak2utny4v" path="res://Mechanics/PowerPuzzle/Models/Textures/T_PuzzlePole_Basic_ME.png" id="1_tib5a"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("1_tib5a")
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_operator = 1
+emission_texture = ExtResource("1_tib5a")

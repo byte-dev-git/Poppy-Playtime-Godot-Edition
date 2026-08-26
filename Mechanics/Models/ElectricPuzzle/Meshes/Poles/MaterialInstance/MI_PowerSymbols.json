@@ -1,0 +1,44 @@
+{
+  "Textures": {
+    "BC": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_DIF.T_LightningSymbols_DIF",
+    "PM_Diffuse": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_DIF.T_LightningSymbols_DIF",
+    "T_LightningSymbols_DIF": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_DIF.T_LightningSymbols_DIF",
+    "PM_Normals": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_NRM.T_LightningSymbols_NRM",
+    "Normal": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_NRM.T_LightningSymbols_NRM",
+    "PM_SpecularMasks": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_ORME.T_LightningSymbols_ORME",
+    "ORM": "/WorldAssetsChapters/ElectricPuzzle/Meshes/Poles/MaterialInstance/Textures/T_LightningSymbols_ORME.T_LightningSymbols_ORME"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Emissive Color": {
+        "R": 0.135417,
+        "G": 0.69762,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "67DAFF"
+      }
+    },
+    "Scalars": {
+      "Emissive Intensity": 1.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Emissive in Alpha (ORM)": true
+    },
+    "Properties": {
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": true,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

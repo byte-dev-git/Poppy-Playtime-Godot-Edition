@@ -1,0 +1,41 @@
+{
+  "Textures": {
+    "BC (T2d)": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_Tape_BC.T_VHS_Tape_BC",
+    "T_VHS_Tape_BC": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_Tape_BC.T_VHS_Tape_BC",
+    "Mask": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_ColorMask_M.T_VHS_ColorMask_M",
+    "PM_SpecularMasks": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_Tape_ORM.T_VHS_Tape_ORM",
+    "T_VHS_ColorMask_M": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_ColorMask_M.T_VHS_ColorMask_M",
+    "PM_Normals": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_Tape_N.T_VHS_Tape_N",
+    "Normal (T2d)": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_Tape_N.T_VHS_Tape_N",
+    "ORM (T2d)": "/WorldAssetsChapters/VHS/Meshes/Textures/T_VHS_Tape_ORM.T_VHS_Tape_ORM"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Re-Color": {
+        "R": 0.942708,
+        "G": 0.02455,
+        "B": 0.02455,
+        "A": 1.0,
+        "Hex": "F92B2B"
+      }
+    },
+    "Scalars": {
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      },
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
