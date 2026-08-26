@@ -30,7 +30,7 @@ var decelleration: float = 50.0
 
 var jump_height: float = 0.6
 var gravity: float = 9.0
-var camera_sens: float = 2.0
+var camera_sens: float = 1.35
 var camera_smooth_speed: float = 15.0
 
 var player_height: float = 1.7
@@ -90,9 +90,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.keycode == KEY_R: raise_grabpack()
 		elif event.keycode == KEY_T: lower_raise_grabpack()
 		elif event.keycode == KEY_V: enable_camera_animation = !enable_camera_animation
-	
-	if event.is_action_pressed("left_hand"): left_hand.launch()
-	if event.is_action_pressed("right_hand"): right_hand.launch()
 
 func _process(delta: float) -> void:
 	neck.rotation.x = lerp_angle(neck.rotation.x, target_rotation.x, camera_smooth_speed * delta)
