@@ -195,7 +195,7 @@ func switch_hand(type: int, new_hand: int) -> void:
 	if disabled: return
 	if switching: return
 	
-	timer.start(0.75)
+	timer.start(0.8)
 	switching = true
 	
 	if new_hand > hands.size() - 1:
@@ -326,14 +326,14 @@ func _physics_process(delta: float) -> void:
 
 		if Input.is_action_pressed("right_hand"):
 			hold_to_pull_timer += delta
-			if hold_to_pull_timer >= 0.35:
+			if hold_to_pull_timer >= 0.75:
 				pickup_target(false)
 				hold_to_pull_timer = 0.0
 		elif Input.is_action_just_pressed("drop_item"):
 			pickup_target(false)
 			hold_to_pull_timer = 0.0
 		elif Input.is_action_just_released("right_hand"):
-			if hold_to_pull_timer > 0.0 and hold_to_pull_timer < 0.35:
+			if hold_to_pull_timer > 0.0 and hold_to_pull_timer < 0.75:
 				launch()
 			hold_to_pull_timer = 0.0
 	
