@@ -4,14 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cgb2uqcvw8pt1" path="res://Mechanics/PowerPuzzle/Models/Textures/MI_PuzzlePole_Basic_BC.png" id="1_u8eli"]
 [ext_resource type="Texture2D" uid="uid://bssmr3ahwynce" path="res://Mechanics/Models/ElectricPuzzle/Meshes/Poles/BasicPole/MI_PuzzlePole_Basic_Normal.png" id="2_lf2f4"]
 [ext_resource type="Texture2D" uid="uid://jsrak2utny4v" path="res://Mechanics/PowerPuzzle/Models/Textures/T_PuzzlePole_Basic_ME.png" id="2_n2mif"]
-[ext_resource type="Material" uid="uid://blxh0x5thcueg" path="res://Mechanics/PowerPuzzle/M_PowerPole_Inactive.tres" id="3_eyk1w"]
 [ext_resource type="Texture2D" uid="uid://clmh2w8jr0i8h" path="res://Mechanics/Models/ElectricPuzzle/Meshes/Poles/BasicPole/T_PuzzlePole_Basic_ORME.png" id="3_n2mif"]
 [ext_resource type="AudioStream" uid="uid://dmeu2l8aw4752" path="res://Character/Sound/Systems/ElectricalPole/SW_Conduit_ElectricCurrent_LOOP.wav" id="7_wxqq2"]
 [ext_resource type="AudioStream" uid="uid://jmdymf2cw35m" path="res://Character/Sound/Systems/ElectricalPole/SW_Conduit_ElectricPole_Charged.wav" id="8_0yl6f"]
 [ext_resource type="AudioStream" uid="uid://dbahgcwlols4p" path="res://Character/Sound/Systems/ElectricalPole/SW_Conduit_ElectricPole_Discharged.wav" id="9_qjiv5"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ciavm"]
-next_pass = ExtResource("3_eyk1w")
 albedo_texture = ExtResource("1_u8eli")
 orm_texture = ExtResource("3_n2mif")
 emission_texture = ExtResource("2_n2mif")
@@ -52,6 +50,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1eeht")
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_gbdmr"]
+albedo_texture = ExtResource("1_u8eli")
+orm_texture = ExtResource("3_n2mif")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_operator = 1
+emission_texture = ExtResource("2_n2mif")
+normal_enabled = true
+normal_texture = ExtResource("2_lf2f4")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_wxqq2"]
 radius = 0.3058545
 
@@ -80,6 +88,7 @@ script = ExtResource("1_eyk1w")
 [node name="SM_PuzzlePole_Basic_mo" type="MeshInstance3D" parent="PowerSource" unique_id=831457408]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_eyk1w")
+surface_material_override/0 = SubResource("ORMMaterial3D_gbdmr")
 
 [node name="Detection" type="Area3D" parent="." unique_id=2096782544 groups=["PowerPole"]]
 
@@ -115,3 +124,10 @@ stream = ExtResource("8_0yl6f")
 
 [node name="SwConduitElectricPoleDischarged" type="AudioStreamPlayer3D" parent="." unique_id=1317034395]
 stream = ExtResource("9_qjiv5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1831965164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7514186, 0)
+visible = false
+light_color = Color(0, 0.7666669, 1, 1)
+light_volumetric_fog_energy = 4.0
+omni_range = 0.79499245
