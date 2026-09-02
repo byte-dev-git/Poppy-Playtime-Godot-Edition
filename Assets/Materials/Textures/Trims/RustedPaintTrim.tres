@@ -1,0 +1,12 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://b6xey1nq13vcl"]
+
+[ext_resource type="Texture2D" uid="uid://c6d07807nl77h" path="res://Objects/Materials/Trims/Floor/T_RustedPaintTrim_A_BC.png" id="1_et2yk"]
+[ext_resource type="Texture2D" uid="uid://dgbpdw3qnbl4y" path="res://Objects/Materials/Trims/Floor/T_RustedPaintTrim_A_N.png" id="2_t1tql"]
+[ext_resource type="Texture2D" uid="uid://baue216kiodty" path="res://Objects/Materials/Trims/Floor/T_RustedPaintTrim_A_ORMK.png" id="3_n5iq0"]
+
+[resource]
+albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+albedo_texture = ExtResource("1_et2yk")
+orm_texture = ExtResource("3_n5iq0")
+normal_enabled = true
+normal_texture = ExtResource("2_t1tql")

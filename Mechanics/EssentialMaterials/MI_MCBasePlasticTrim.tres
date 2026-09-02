@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cg0q4bqcpijqa" path="res://Mechanics/Models/Materials/Trims/Textures/BasePlasticTrim_A/T_BasePlasticTrim_A_ORMK.png" id="4_6vog5"]
 
 [resource]
-albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("1_a2nlf")
 orm_texture = ExtResource("4_6vog5")
 normal_enabled = true

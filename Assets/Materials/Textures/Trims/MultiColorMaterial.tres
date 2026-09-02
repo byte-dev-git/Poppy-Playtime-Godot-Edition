@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://w0x151n5t1hg"]
+
+[ext_resource type="Shader" uid="uid://56nn8jfk7qsj" path="res://Character/Shaders/material_orm.gdshader" id="1_c3nc5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c3nc5")
+shader_parameter/flip_normal_y = true
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness_scale = 1.0
+shader_parameter/metallic_scale = 1.0
+shader_parameter/ao_amount = 1.0
+shader_parameter/anisotropy = 0.0
+shader_parameter/specular = 0.5

@@ -3,12 +3,12 @@ extends Node3D
 enum HandState { IDLE, LAUNCHING, ATTACHED, PULLING, RETRACTING, HOLDING }
 var current_state: HandState = HandState.IDLE
 
-var max_range: float = 20.0
+var max_range = 30.0
 var launch_speed: float = 25.0
 var retract_speed: float = 30.0
-var stick_time: float = 0.2
+var stick_time: float = 0.35
 var surface_push_offset: float = 0.015
-var initial_scale: Vector3 = Vector3(1.0, 1.0, 1.0)
+var initial_scale: Vector3 = Vector3(0.95, 0.95, 0.95)
 var exit_scale_multiplier: float = 2.0
 var exit_grow_speed_factor: float = 1.4
 var use_camera_raycast: bool = true
@@ -26,22 +26,31 @@ var surface_slide_offset: float = -0.045
 @export var grab_sounds: Array[AudioStream]
 @export var release_sounds: Array[AudioStream]
 
-@onready var retract_audio_player: AudioStreamPlayer3D = $"../SK_FirstPersonPlayer_Grabpack/SK_FirstPersonPlayer_Grabpack/Skeleton3D/RightHandBone/RightHandAudio"
-@onready var player: CharacterBody3D = $"../.."
-@onready var raycast: RayCast3D = $SK_rightHand/RayCast3D
-@onready var camera: Camera3D = $"../../Neck/Camera3D"
-@onready var camera_raycast: RayCast3D = $"../../Neck/Camera3D/RayCast3D"
-@onready var remote_transform: RemoteTransform3D = $"../SK_FirstPersonPlayer_Grabpack/SK_FirstPersonPlayer_Grabpack/Skeleton3D/RightHandBone/RemoteTransform3D"
+@onready var hand_pos: Node3D = $".."
+@onready var player: CharacterBody3D = $"../../../../../../.."
+@onready var retract_audio_player: AudioStreamPlayer3D = $"../../RightHandAudio"
+
+@onready var raycast: RayCast3D = $RayCast3D
 @onready var finger_rays: Node3D = $FigerRays
-@onready var cable: CablePhysics = $CablePhysics
-@onready var hands_container: Node3D = $Hands
-@onready var grabpack_anim_tree: AnimationTree = $"../SK_FirstPersonPlayer_Grabpack/AnimationTree"
-@onready var right_tube: JacobianIK3D = $"../SK_FirstPersonPlayer_Grabpack/SK_FirstPersonPlayer_Grabpack/Skeleton3D/RightTubeIK"
-@onready var lookat_modifier: LookAtModifier3D = $"../SK_FirstPersonPlayer_Grabpack/SK_FirstPersonPlayer_Grabpack/Skeleton3D/RightLookAtModifier"
-@onready var item_raycast: RayCast3D = $"../../Neck/Camera3D/ItemRaycast"
-@onready var lookat_marker: Marker3D = $"../SK_FirstPersonPlayer_Grabpack/SK_FirstPersonPlayer_Grabpack/Skeleton3D/RightLookAtModifier/LookAtMarker"
+@onready var cable: CablePhysics = $"../CablePhysics"
+@onready var sk_right_hand: Node3D = $SK_RightHand
+@onready var anim_tree: AnimationTree = $AnimationTree
 @onready var item_pos: Node3D = $ItemPos
+
+@onready var grabpack: Node3D = $"../../../../../.."
+@onready var grabpack_anim_tree: AnimationTree = $"../../../../../AnimationTree"
 @onready var timer: Timer = $Timer
+
+@onready var camera: Camera3D = $"../../../../../../../Neck/Camera3D"
+@onready var camera_raycast: RayCast3D = $"../../../../../../../Neck/Camera3D/RayCast3D"
+@onready var item_raycast: RayCast3D = $"../../../../../../../Neck/Camera3D/ItemRaycast"
+
+@onready var lean_modifier: BoneMultiModifier = $"../../../RightHandLean"
+@onready var right_tube: JacobianIK3D = $"../../../RightTubeIK"
+
+@onready var hands_container: Node3D = $Hands
+
+var on_wall: bool = false
 
 var retract_path: Array[Vector3] = []
 
@@ -91,10 +100,11 @@ var initial_item_pos_rotation: Vector3 = Vector3.ZERO
 var is_item_pos_rotated: bool = false
 
 func _ready() -> void:
-	top_level = true
+	top_level = false
+	position = Vector3.ZERO
+	rotation = Vector3.ZERO
 	scale = initial_scale
-	if has_node("Hands/RedHand"):
-		$Hands/RedHand.queue_free()
+	$Hands/RedHand.queue_free()
 	screen_center = get_viewport().get_visible_rect().size / 2.0
 
 	if item_pos:
@@ -119,10 +129,6 @@ func _ready() -> void:
 		item_raycast.collide_with_areas = true
 		item_raycast.hit_back_faces = true
 		item_raycast.hit_from_inside = true
-
-	if remote_transform:
-		remote_transform.update_position = true
-		remote_transform.update_rotation = true
 
 	if hands.size() > 0:
 		set_hand(0)
@@ -197,6 +203,7 @@ func switch_hand(type: int, new_hand: int) -> void:
 	
 	timer.start(0.8)
 	switching = true
+	$"../../../RightTubeIK".influence = 0.0
 	
 	if new_hand > hands.size() - 1:
 		new_hand = 0
@@ -205,7 +212,8 @@ func switch_hand(type: int, new_hand: int) -> void:
 
 	queue_hand(new_hand)
 	grabpack_anim_tree.set("parameters/Switch/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
+	
+	await get_tree().create_timer(0.25).timeout
 	if switch_sound:
 		_play_one_shot(switch_sound)
 
@@ -243,34 +251,17 @@ func enable_hand() -> void:
 	disabled = false
 
 func _process(delta: float) -> void:
-	var target_weight: float = 0.0
-	var blend_speed: float = 12.0
-	var max_angle_deg: float = 80.0
-
 	if current_state != HandState.RETRACTING and current_state != HandState.HOLDING:
-		var is_in_range: bool = false
-
-		if current_state != HandState.IDLE and is_instance_valid(lookat_marker):
-			var reference_node: Node3D = get_parent()
-			var local_target_pos: Vector3 = reference_node.to_local(lookat_marker.global_position)
-			var local_dir: Vector3 = local_target_pos.normalized()
-
-			var raw_y_rad: float = atan2(local_dir.x, -local_dir.z)
-			var angle_y_deg: float = abs(rad_to_deg(raw_y_rad))
-
-			is_in_range = angle_y_deg <= max_angle_deg
-
-		if current_state != HandState.IDLE and is_in_range:
-			target_weight = 1.0
+		if current_state != HandState.IDLE:
+			await get_tree().create_timer(0.05).timeout
+			lean_modifier.lookat_influence = lerp(lean_modifier.lookat_influence, 1.0, 12.0 * delta)
 			right_tube.active = true
 		else:
-			target_weight = 0.0
-			right_tube.active = true
-
-		lookat_modifier.influence = lerp(lookat_modifier.influence, target_weight, blend_speed * delta)
-		lookat_modifier.active = lookat_modifier.influence > 0.01
+			lean_modifier.lookat_influence = lerp(lean_modifier.lookat_influence, 0.0, 12.0 * delta)
+			right_tube.active = false
 	else:
-		lookat_modifier.influence = lerp(lookat_modifier.influence, 0.0, blend_speed * delta)
+		lean_modifier.lookat_influence = lerp(lean_modifier.lookat_influence, 0.0, 12.0 * delta)
+		right_tube.active = false
 
 	if current_state == HandState.ATTACHED or current_state == HandState.PULLING:
 		if has_node("FigerRays/Finger2") and not $FigerRays/Finger2.is_colliding():
@@ -319,23 +310,28 @@ func _physics_process(delta: float) -> void:
 		_reset_item_pos_rotation()
 		if Input.is_action_just_pressed("right_hand"):
 			launch()
+	elif not player.is_grabpack_lowered:
+		if current_state == HandState.HOLDING:
+			if Input.is_action_just_pressed("right_hand"):
+				hold_to_pull_timer = 0.0
 
-	elif current_state == HandState.HOLDING:
-		if Input.is_action_just_pressed("right_hand"):
-			hold_to_pull_timer = 0.0
-
-		if Input.is_action_pressed("right_hand"):
-			hold_to_pull_timer += delta
-			if hold_to_pull_timer >= 0.75:
+			if Input.is_action_pressed("right_hand"):
+				hold_to_pull_timer += delta
+				if hold_to_pull_timer >= 0.75:
+					pickup_target(false)
+					hold_to_pull_timer = 0.0
+			elif Input.is_action_just_pressed("drop_item"):
 				pickup_target(false)
 				hold_to_pull_timer = 0.0
-		elif Input.is_action_just_pressed("drop_item"):
-			pickup_target(false)
-			hold_to_pull_timer = 0.0
-		elif Input.is_action_just_released("right_hand"):
-			if hold_to_pull_timer > 0.0 and hold_to_pull_timer < 0.75:
-				launch()
-			hold_to_pull_timer = 0.0
+			elif Input.is_action_just_released("right_hand"):
+				if hold_to_pull_timer > 0.0 and hold_to_pull_timer < 0.75:
+					launch()
+				hold_to_pull_timer = 0.0
+	
+	if player.is_grabpack_lowered:
+		if current_state != HandState.IDLE:
+			if current_state != HandState.HOLDING:
+				start_retract()
 	
 	if is_held:
 		surface_push_offset = 0.2
@@ -377,13 +373,17 @@ func _physics_process(delta: float) -> void:
 		HandState.IDLE:
 			scale = initial_scale
 			_reset_item_pos_rotation()
+			if top_level:
+				top_level = false
+				position = Vector3.ZERO
+				rotation = Vector3.ZERO
 			
 		HandState.HOLDING:
 			scale = initial_scale
-			
-			if remote_transform:
-				global_position = remote_transform.global_position
-				global_rotation = remote_transform.global_rotation
+			if top_level:
+				top_level = false
+				position = Vector3.ZERO
+				rotation = Vector3.ZERO
 
 			if is_held and is_instance_valid(held_object):
 				var held_anim = _get_held_anim_name()
@@ -432,11 +432,19 @@ func _physics_process(delta: float) -> void:
 						else:
 							current_hit_type = "surface"
 							current_target_node = null
-						next_position = hit.position
-						t = 1.0
+						
 						will_hit_surface = true
 						hit_surface_normal = hit.normal
-						launch_target_position = hit.position
+						
+						# Pre-calculate the slide offset for the mid-flight impact
+						var temp_trans = global_transform
+						_align_to_surface(hit_surface_normal)
+						var slide_vector = global_transform.basis * Vector3(0, surface_slide_offset, 0)
+						global_transform = temp_trans
+						
+						launch_target_position = hit.position + slide_vector
+						next_position = launch_target_position
+						t = 1.0
 
 			var grow_t: float = min(t * exit_grow_speed_factor, 1.0)
 			scale = initial_scale.lerp(initial_scale * exit_scale_multiplier, grow_t)
@@ -502,33 +510,21 @@ func _physics_process(delta: float) -> void:
 				elif current_hit_type == "pullable" and current_target_node:
 					current_state = HandState.ATTACHED
 					_play_grab_sound(false)
-					
-					# 1. Initial position and alignment
 					hit_offset_local = current_target_node.to_local(launch_target_position)
 					hit_normal_local = current_target_node.global_transform.basis.inverse() * hit_surface_normal
 					var offset_local = hit_offset_local + hit_normal_local * surface_push_offset
 					global_position = current_target_node.to_global(offset_local)
 					_align_to_surface(hit_surface_normal)
-					
-					# 2. Slide the entire LeftHand node down along the wall
-					translate_object_local(Vector3(0, surface_slide_offset, 0))
-					
-					# 3. Recalculate hit_offset_local so it STAYS in this lowered position
-					var lowered_local_pos = current_target_node.to_local(global_position)
-					hit_offset_local = lowered_local_pos - (hit_normal_local * surface_push_offset)
-
 					var collider_rot = current_target_node.global_transform.basis.orthonormalized()
 					var hand_rot = global_transform.basis.orthonormalized()
 					hit_basis_local = collider_rot.inverse() * hand_rot
 
 				elif current_hit_type == "surface" and will_hit_surface:
 					current_state = HandState.ATTACHED
+					if current_hand_node.name == "ConductiveHand":
+						current_hand_node.play_impact()
 					global_position = launch_target_position + (hit_surface_normal * surface_push_offset)
 					_align_to_surface(hit_surface_normal)
-					
-					# Slide the entire LeftHand node down along the wall
-					translate_object_local(Vector3(0, surface_slide_offset, 0))
-					
 					_apply_item_pos_surface_rotation()
 					stick_timer = stick_time
 
@@ -599,8 +595,10 @@ func _physics_process(delta: float) -> void:
 							start_retract()
 						hold_to_pull_timer = 0.0
 			else:
+				on_wall = true
 				stick_timer -= delta
 				if stick_timer <= 0.0:
+					on_wall = false
 					start_retract()
 
 		HandState.PULLING:
@@ -626,9 +624,7 @@ func _physics_process(delta: float) -> void:
 
 		HandState.RETRACTING:
 			_reset_item_pos_rotation()
-			if not remote_transform:
-				return
-			var target_position: Vector3 = retract_path[0] if retract_path.size() > 0 else remote_transform.global_position
+			var target_position: Vector3 = retract_path[0] if retract_path.size() > 0 else hand_pos.global_position
 			
 			var step = retract_speed * delta
 			global_position = global_position.move_toward(target_position, step)
@@ -650,10 +646,11 @@ func _physics_process(delta: float) -> void:
 						cable.rope_points.remove_at(cable.rope_points.size() - 2)
 						cable.rope_normals.remove_at(cable.rope_normals.size() - 2)
 				else:
-					global_position = remote_transform.global_position
+					# Snap back into local space relative to hand_pos
+					top_level = false
+					position = Vector3.ZERO
+					rotation = Vector3.ZERO
 					scale = initial_scale
-					remote_transform.update_position = true
-					remote_transform.update_rotation = true
 					cable.is_active = false
 
 					if is_held:
@@ -772,20 +769,21 @@ func cable_sound(on: bool) -> void:
 			retract_audio_player.stop()
 
 func launch() -> void:
+	if current_hand_node.name == "FlareGun":
+		current_hand_node._shoot()
+		return
+	
 	if grabpack_anim_tree.get("parameters/Switch/active") == true:
 		return
 	if player and player.is_grabpack_lowered:
 		return
 	if (current_state != HandState.IDLE and current_state != HandState.HOLDING) or disabled:
 		return
+
 	allow_pulling = false
 	cable.is_active = true
-	player.hand_right(true)
+	player.hand_InOut(true, true)
 	has_released_after_launch = false
-
-	if remote_transform:
-		remote_transform.update_position = false
-		remote_transform.update_rotation = false
 
 	current_hit_type = "surface"
 	current_target_node = null
@@ -794,15 +792,21 @@ func launch() -> void:
 	hit_basis_local = Basis()
 	hold_to_pull_timer = 0.0
 	current_state = HandState.LAUNCHING
-	launch_start_position = remote_transform.global_position
+
+	# Enable top_level to detach movement from hand_pos during flight
+	top_level = true
+	launch_start_position = hand_pos.global_position
 	global_position = launch_start_position
+	global_rotation = hand_pos.global_rotation
 	scale = initial_scale
 	launch_elapsed = 0.0
 	
-	launch_start_position = camera.global_position if camera else remote_transform.global_position
-	
 	var aim: Dictionary = _get_aim_target()
 	launch_target_position = aim.position
+	if camera and aim.hit_type != "target" and aim.hit:
+		var side_dir = camera.global_transform.basis.x.slide(aim.normal)
+		if not side_dir.is_zero_approx():
+			launch_target_position += side_dir.normalized() * 0.13
 	hit_surface_normal = aim.normal
 	will_hit_surface = aim.hit
 	current_hit_type = aim.hit_type
@@ -812,15 +816,23 @@ func launch() -> void:
 		if current_hit_type == "target" and current_target_node.has_method("claim_target"):
 			current_target_node.claim_target("right")
 
-		if current_hit_type == "pullable":
+	if global_position != launch_target_position:
+		look_at(launch_target_position, Vector3.UP)
+		rotate_object_local(Vector3.UP, PI)
+
+	if current_hit_type in ["surface", "pullable"]:
+		var temp_trans = global_transform
+		_align_to_surface(hit_surface_normal)
+		var slide_vector = global_transform.basis * Vector3(0, surface_slide_offset, 0)
+		global_transform = temp_trans
+		
+		launch_target_position += slide_vector
+
+		if current_hit_type == "pullable" and current_target_node:
 			hit_offset_local = current_target_node.to_local(launch_target_position)
 			hit_normal_local = current_target_node.global_transform.basis.inverse() * hit_surface_normal
 
 	launch_duration = max(launch_start_position.distance_to(launch_target_position) / launch_speed, 0.05)
-
-	if global_position != launch_target_position:
-		look_at(launch_target_position, Vector3.UP)
-		rotate_object_local(Vector3.UP, PI)
 
 	play_animation("Fire")
 
@@ -951,12 +963,10 @@ func start_retract() -> void:
 	hit_basis_local = Basis()
 	hold_to_pull_timer = 0.0
 	has_released_after_launch = false
-	player.hand_right(false)
-	
-	var prev_state = current_state
+	player.hand_InOut(true, false)
 	current_state = HandState.RETRACTING
-
-	if cable and cable.rope_points.size() > 2 and prev_state != HandState.LAUNCHING:
+	
+	if cable and cable.rope_points.size() > 2:
 		retract_path = cable.rope_points.duplicate()
 		retract_path.reverse()
 		retract_path.pop_front()
@@ -1003,14 +1013,12 @@ func pickup_target(pick: bool) -> void:
 				if child is GrabTarget:
 					grab_target = child
 					break
-
-		# ✅ STRICT CHECK: If a GrabTarget exists, fail pickup if it didn't register/claim for left hand
 		if grab_target:
 			if grab_target and (not grab_target.is_grabbed or grab_target.current_claiming_hand != "right"):
 					return
 
 		if pickable and not _is_pickable_already_held(pickable):
-			pickable.pick_up("left", item_pos)
+			pickable.pick_up("right", item_pos)
 			held_object = pickable
 			is_held = true
 			var held_anim = _get_held_anim_name()
@@ -1030,10 +1038,21 @@ func pickup_target(pick: bool) -> void:
 
 func _align_to_surface(target_normal: Vector3) -> void:
 	var current_scale = global_transform.basis.get_scale()
-	var hand_basis = global_transform.basis
-	var forward_target = hand_basis.y
 
-	var right_axis = target_normal.cross(forward_target).normalized()
+	# Use world UP as a stable reference (matches what hand_basis.y typically is)
+	var reference_dir: Vector3 = Vector3.UP
+
+	# If the surface normal is nearly parallel to UP (floor/ceiling),
+	# project camera forward onto the surface plane instead
+	if abs(target_normal.dot(Vector3.UP)) > 0.99:
+		var cam_fwd: Vector3 = Vector3.FORWARD
+		if camera:
+			cam_fwd = (-camera.global_transform.basis.z).normalized()
+		reference_dir = (cam_fwd - target_normal * cam_fwd.dot(target_normal)).normalized()
+		if reference_dir.length_squared() < 0.001:
+			reference_dir = Vector3.RIGHT
+
+	var right_axis = target_normal.cross(reference_dir).normalized()
 	if right_axis.is_zero_approx():
 		right_axis = Vector3.RIGHT
 
@@ -1041,16 +1060,15 @@ func _align_to_surface(target_normal: Vector3) -> void:
 	var result = Basis(right_axis, target_normal, forward_axis)
 
 	global_transform.basis = result.orthonormalized().scaled(current_scale)
-	rotate_object_local(Vector3.UP, 0.0)
 	rotate_object_local(Vector3.RIGHT, PI / 2.0)
 
 func _apply_item_pos_surface_rotation() -> void:
-	if item_pos and not is_item_pos_rotated:
+	if not is_item_pos_rotated:
 		item_pos.rotation.x = initial_item_pos_rotation.x + deg_to_rad(surface_hit_item_rotation_deg)
 		is_item_pos_rotated = true
 
 func _reset_item_pos_rotation() -> void:
-	if item_pos and is_item_pos_rotated:
+	if is_item_pos_rotated:
 		item_pos.rotation = initial_item_pos_rotation
 		is_item_pos_rotated = false
 
@@ -1073,3 +1091,4 @@ func _play_grab_sound(hand_grab: bool) -> void:
 
 func _on_timer_timeout() -> void:
 	switching = false
+	$"../../../RightTubeIK".influence = 1.0

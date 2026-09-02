@@ -1,0 +1,12 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://bsafp3l6awk7o"]
+
+[ext_resource type="Texture2D" uid="uid://duekydnpvpe0e" path="res://Decoration/Mika_Assets/CorrugatedMetalPanels/texture/T_MetalFence_F_BC.PNG" id="1_rtbcf"]
+[ext_resource type="Texture2D" uid="uid://de7vnsrnk2c5m" path="res://Decoration/Mika_Assets/CorrugatedMetalPanels/texture/T_MetalFence_E_N.PNG" id="2_tfegm"]
+[ext_resource type="Texture2D" uid="uid://xop7oju2mtkj" path="res://Decoration/Mika_Assets/CorrugatedMetalPanels/texture/T_MetalFence_E_ORM.PNG" id="3_1ntq3"]
+
+[resource]
+albedo_texture = ExtResource("1_rtbcf")
+orm_texture = ExtResource("3_1ntq3")
+normal_enabled = true
+normal_texture = ExtResource("2_tfegm")
+ao_light_affect = 1.0

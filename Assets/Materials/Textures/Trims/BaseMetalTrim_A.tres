@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://d0hetb8861nel"]
+
+[ext_resource type="Texture2D" uid="uid://c3xc5tbkw0oa8" path="res://Objects/Materials/Trims/Metal/T_BaseMetalTrim_A_BC.png" id="1_7l1rj"]
+[ext_resource type="Texture2D" uid="uid://dbx606srbco6k" path="res://Objects/Materials/Trims/Metal/T_BaseMetalTrim_A_N.png" id="2_p2r7m"]
+[ext_resource type="Texture2D" uid="uid://d0tdlfpwtv0l7" path="res://Objects/Materials/Trims/Metal/T_BaseMetalTrim_A_ORM.png" id="3_1enaa"]
+
+[resource]
+albedo_texture = ExtResource("1_7l1rj")
+orm_texture = ExtResource("3_1enaa")
+normal_enabled = true
+normal_texture = ExtResource("2_p2r7m")

@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://dqwmaikvr8c3t"]
+
+[ext_resource type="Texture2D" uid="uid://0w5bxyyu8nwp" path="res://Objects/Materials/Trims/MagneticSurfaces/T_MagneticSurfaces_BCA.png" id="1_yph86"]
+[ext_resource type="Texture2D" uid="uid://wkahfqu5tf4t" path="res://Objects/Materials/Trims/MagneticSurfaces/T_MagneticSurfaces_N.png" id="2_c1dxe"]
+[ext_resource type="Texture2D" uid="uid://m6s5d20pmysi" path="res://Objects/Materials/Trims/MagneticSurfaces/T_MagneticSurfaces_ORMK.png" id="3_5yxl7"]
+
+[resource]
+albedo_texture = ExtResource("1_yph86")
+orm_texture = ExtResource("3_5yxl7")
+normal_enabled = true
+normal_texture = ExtResource("2_c1dxe")

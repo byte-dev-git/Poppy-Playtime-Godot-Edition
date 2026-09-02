@@ -1,0 +1,12 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://c8i8aptdphs61"]
+
+[ext_resource type="Texture2D" uid="uid://cjcxpf232ynep" path="res://Decoration/Materials/Textures/Concrete/T_ConcreteWall_B_BC.png" id="1_bvfa3"]
+[ext_resource type="Texture2D" uid="uid://cj4b7vr2wu2cm" path="res://Decoration/Materials/Textures/Concrete/T_ConcreteWall_B_N.png" id="2_efb2g"]
+[ext_resource type="Texture2D" uid="uid://csju5338on8hw" path="res://Decoration/Materials/Textures/Concrete/T_ConcreteWall_B_ORMK.png" id="3_a4d2a"]
+
+[resource]
+albedo_color = Color(0.4, 0.39215687, 0.34117648, 1)
+albedo_texture = ExtResource("1_bvfa3")
+orm_texture = ExtResource("3_a4d2a")
+normal_enabled = true
+normal_texture = ExtResource("2_efb2g")

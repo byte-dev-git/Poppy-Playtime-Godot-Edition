@@ -12,13 +12,15 @@ class_name SoundManager
 @export var jump_sounds: Array[AudioStream]
 @export var fall_sound: AudioStream
 @export var switch_sidle_sound: Array[AudioStream]
+@export var flashlight_on: Array[AudioStream]
+@export var flashlight_off: AudioStream
+@export var flashlight_glowby: Array[AudioStream]
 
 @export_category("Step Distance Thresholds")
 @export var walk_step_threshold: float = 2.5
 @export var sprint_step_threshold: float = 2.0
 @export var crouch_step_threshold: float = 1.8
 
-# --- SEPARATE VARIANT ARRAYS ---
 @export_group("Concrete Sounds")
 @export var walk_concrete: Array[AudioStream]
 @export var run_concrete: Array[AudioStream]
@@ -94,6 +96,17 @@ func _process(delta: float) -> void:
 
 	_handle_state_sounds()
 	_handle_footsteps(delta)
+
+func toggle_sound(state_name: String):
+	match state_name:
+		"SwitchPack":
+			_play_one_shot(switch_sidle_sound.pick_random())
+		"FlashlightOn":
+			_play_one_shot(flashlight_on.pick_random())
+		"FlashlightOff":
+			_play_one_shot(flashlight_off)
+		"ToggleGlowbyFlashlight":
+			_play_one_shot(flashlight_glowby.pick_random())
 
 func _handle_state_sounds() -> void:
 	# --- CROUCH / UNCROUCH ---

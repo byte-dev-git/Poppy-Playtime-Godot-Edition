@@ -49,6 +49,8 @@ func pick_up(hand_side: String, hand_node: Node3D) -> void:
 		child.disabled = true
 
 	reparent(hand_node, true)
+	if self.is_in_group("Battery"):
+		position = Vector3.ZERO
 	picked_up.emit(hand_side)
 	on_grabbed.emit(hand_side)
 

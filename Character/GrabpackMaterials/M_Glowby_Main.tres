@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cwlo50ri1vosv"]
+
+[ext_resource type="Shader" uid="uid://56nn8jfk7qsj" path="res://Character/Shaders/material_orm.gdshader" id="1_qbbwl"]
+[ext_resource type="Texture2D" uid="uid://dyk8ctm2aavvx" path="res://Character/GrabpackMaterials/Textures/T_Glowby_Main_BC.png" id="2_3x2qp"]
+[ext_resource type="Texture2D" uid="uid://jo2y5vtlb4rc" path="res://Character/GrabpackMaterials/Textures/T_Glowby_Main_BNT.png" id="3_q55i2"]
+[ext_resource type="Texture2D" uid="uid://uicddmmbv5fr" path="res://Character/GrabpackMaterials/Textures/T_Glowby_Main_N.png" id="4_18flx"]
+[ext_resource type="Texture2D" uid="uid://b4mt8ly4ug2hd" path="res://Character/GrabpackMaterials/Textures/T_Glowby_Main_ORM.png" id="5_etfei"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qbbwl")
+shader_parameter/albedo = ExtResource("2_3x2qp")
+shader_parameter/normal = ExtResource("4_18flx")
+shader_parameter/bent_normal = ExtResource("3_q55i2")
+shader_parameter/orm = ExtResource("5_etfei")
+shader_parameter/flip_normal_y = true
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness_scale = 1.0
+shader_parameter/metallic_scale = 1.0
+shader_parameter/ao_amount = 1.0
+shader_parameter/anisotropy = 0.5000000712500001
+shader_parameter/specular = 0.400000019

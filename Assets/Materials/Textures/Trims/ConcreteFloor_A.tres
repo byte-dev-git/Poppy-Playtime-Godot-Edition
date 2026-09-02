@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://c0gcunibmx2tx"]
+
+[ext_resource type="Texture2D" uid="uid://jocipoad72c6" path="res://Decoration/Materials/Textures/Concrete/T_ConcreteFloor_A_BC.png" id="1_msfqc"]
+[ext_resource type="Texture2D" uid="uid://do0r8soetx2yy" path="res://Decoration/Materials/Textures/Concrete/T_ConcreteFloor_A_N.png" id="2_pianl"]
+[ext_resource type="Texture2D" uid="uid://dfnrik0w12oda" path="res://Decoration/Materials/Textures/Concrete/T_ConcreteFloor_A_ORMK.png" id="3_8fjrw"]
+
+[resource]
+albedo_texture = ExtResource("1_msfqc")
+orm_texture = ExtResource("3_8fjrw")
+normal_enabled = true
+normal_texture = ExtResource("2_pianl")

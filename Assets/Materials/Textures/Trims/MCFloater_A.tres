@@ -1,0 +1,12 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://by0ys6ukqh20q"]
+
+[ext_resource type="Texture2D" uid="uid://5qxgquioa6sk" path="res://Objects/Materials/Trims/Floater/T_Floaters_A_BC.png" id="1_hyxal"]
+[ext_resource type="Texture2D" uid="uid://hnlv3tk4gi5q" path="res://Objects/Materials/Trims/Floater/T_Floaters_A_N.png" id="2_ad00a"]
+[ext_resource type="Texture2D" uid="uid://dq5avakfhqacj" path="res://Objects/Materials/Trims/Floater/T_Floaters_A_ORMK.png" id="3_qqea4"]
+
+[resource]
+transparency = 4
+albedo_texture = ExtResource("1_hyxal")
+orm_texture = ExtResource("3_qqea4")
+normal_enabled = true
+normal_texture = ExtResource("2_ad00a")

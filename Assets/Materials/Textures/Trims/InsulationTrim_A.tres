@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://m065o2i8bsrx"]
+
+[ext_resource type="Texture2D" uid="uid://bftijvywb54cf" path="res://Objects/Materials/Trims/Other/T_InsulationTrim_A_BCA.png" id="1_j40si"]
+[ext_resource type="Texture2D" uid="uid://bhgpgobg2xtwn" path="res://Objects/Materials/Trims/Other/T_InsulationTrim_A_N.png" id="2_pfb0c"]
+[ext_resource type="Texture2D" uid="uid://d2kx2h024vru4" path="res://Objects/Materials/Trims/Other/T_InsulationTrim_A_ORMK.png" id="3_yj5xr"]
+
+[resource]
+albedo_texture = ExtResource("1_j40si")
+orm_texture = ExtResource("3_yj5xr")
+normal_enabled = true
+normal_texture = ExtResource("2_pfb0c")

@@ -21,15 +21,26 @@ class_name CablePhysics
 @export var glowing_material: StandardMaterial3D
 @export var normal_material: StandardMaterial3D
 
+@export var jitter_intensity: float = 0 # Adjust for stronger/weaker shaking
+
+var _cable_mesh: ArrayMesh # Persistent mesh to maintain motion blur history
+var _last_start_pos: Vector3 = Vector3.ZERO
+var _last_end_pos: Vector3 = Vector3.ZERO
+var _motion_intensity: float = 0.0
+
 var is_powered: bool = false
 var rope_points: Array[Vector3] = []
 var rope_normals: Array[Vector3] = [] 
 var is_active: bool = false
 var mesh_instance: MeshInstance3D
 var current_swing_length: float = 0.0
+var current_power_color: Color = Color.WHITE
 
 func _ready() -> void:
 	mesh_instance = MeshInstance3D.new()
+	_cable_mesh = ArrayMesh.new()
+	mesh_instance.mesh = _cable_mesh # Assign the persistent mesh
+	
 	add_child(mesh_instance)
 	if normal_material != null:
 		mesh_instance.material_override = normal_material
@@ -67,18 +78,28 @@ func initialize_cable() -> void:
 		rope_points.append(end_transform.global_position)
 		rope_normals.append(Vector3.UP)
 
-func set_powered(powered: bool) -> void:
+func set_powered(powered: bool, color: Color = Color.WHITE) -> void:
 	is_powered = powered
+	current_power_color = color
+	
 	if mesh_instance != null:
-		mesh_instance.material_override = glowing_material if is_powered else normal_material
+		if is_powered and glowing_material != null:
+			var dynamic_mat = glowing_material.duplicate()
+			dynamic_mat.albedo_color = color
+			dynamic_mat.emission = color
+			mesh_instance.material_override = dynamic_mat
+		else:
+			mesh_instance.material_override = normal_material
 
 func _physics_process(_delta: float) -> void:
 	if not is_active:
-		mesh_instance.mesh = null
+		mesh_instance.visible = false # Hide the mesh instead of destroying it
 		if rope_points.size() > 0:
 			rope_points.clear()
 			rope_normals.clear()
 		return
+		
+	mesh_instance.visible = true
 		
 	if rope_points.size() < 2:
 		initialize_cable()
@@ -97,8 +118,20 @@ func _process(_delta: float) -> void:
 	if not is_active or rope_points.size() < 2:
 		return
 		
-	rope_points[0] = start_transform.global_position
-	rope_points[rope_points.size() - 1] = end_transform.global_position
+	var start_pos = start_transform.global_position
+	var end_pos = end_transform.global_position
+	
+	# Calculate how fast the cable's ends are moving
+	var move_speed = (_last_start_pos.distance_to(start_pos) + _last_end_pos.distance_to(end_pos)) / _delta
+	_last_start_pos = start_pos
+	_last_end_pos = end_pos
+	
+	# Scale the intensity based on speed and smoothly lerp it
+	var target_intensity = clamp(move_speed * 0.04, 0.0, 1.0)
+	_motion_intensity = lerp(_motion_intensity, target_intensity, _delta * 15.0)
+	
+	rope_points[0] = start_pos
+	rope_points[rope_points.size() - 1] = end_pos
 	
 	if lookat_marker != null and rope_points.size() >= 2:
 		lookat_marker.global_position = rope_points[1]
@@ -236,9 +269,23 @@ func render_rope() -> void:
 		for j in range(visual_segments_per_section):
 			var t = float(j) / visual_segments_per_section
 			var lerped_pos = from.lerp(to, t)
-			var droop = sin(t * PI) * distance * sag_amount
+			
+			var arc = sin(t * PI) 
+			var droop = arc * distance * sag_amount
 			var sag_offset = Vector3.DOWN * droop
-			final_points.append(lerped_pos + sag_offset)
+			
+			# Multiply jitter by motion (so it rests) and arc (so ends don't shake)
+			var jitter = Vector3.ZERO
+			var current_jitter_strength = jitter_intensity * _motion_intensity * arc
+			
+			if is_active and current_jitter_strength > 0.001:
+				jitter = Vector3(
+					randf_range(-current_jitter_strength, current_jitter_strength),
+					randf_range(-current_jitter_strength, current_jitter_strength),
+					randf_range(-current_jitter_strength, current_jitter_strength)
+				)
+			
+			final_points.append(lerped_pos + sag_offset + jitter)
 			
 	final_points.append(rope_points[rope_points.size() - 1])
 	generate_tube_mesh(final_points)
@@ -288,4 +335,7 @@ func generate_tube_mesh(points: Array) -> void:
 			st.add_index(next_seg_next)
 			
 	st.generate_normals()
-	mesh_instance.mesh = st.commit()
+	
+	# Clear the old surface and update the existing resource to preserve motion blur
+	_cable_mesh.clear_surfaces()
+	st.commit(_cable_mesh)

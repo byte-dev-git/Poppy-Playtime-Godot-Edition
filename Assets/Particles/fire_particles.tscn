@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dvrs8et3jddb5"]
+
+[ext_resource type="Shader" uid="uid://dgawi13men7rq" path="res://Objects/Gameplay/ConductivePanel/Particles/embers_particle.gdshader" id="1_w1com"]
+[ext_resource type="Shader" uid="uid://bcchin6luckgj" path="res://Objects/Gameplay/ConductivePanel/Particles/embers_material.gdshader" id="2_wj30h"]
+[ext_resource type="Shader" uid="uid://cvst7c8h4mi4c" path="res://Objects/Gameplay/ConductivePanel/Particles/heat_distortion_particle.gdshader" id="4_prrm6"]
+[ext_resource type="Shader" uid="uid://626l8sbfpcwe" path="res://Objects/Gameplay/ConductivePanel/Particles/heat_distortion_material.gdshader" id="5_b4413"]
+[ext_resource type="Texture2D" uid="uid://djo4sbo30rhby" path="res://Objects/Gameplay/ConductivePanel/Particles/T_NoiseNormal_VFX_01.png" id="6_icby2"]
+[ext_resource type="Shader" uid="uid://dt3cchawsbi3c" path="res://Objects/Gameplay/ConductivePanel/Particles/smoke_particle.gdshader" id="7_s8r5l"]
+[ext_resource type="Shader" uid="uid://c8ke1whxwfomj" path="res://Objects/Gameplay/ConductivePanel/Particles/smoke_material.gdshader" id="8_rvawd"]
+[ext_resource type="Texture2D" uid="uid://l0sl56lfcgal" path="res://Objects/Gameplay/ConductivePanel/Particles/T_SimpleFire_Burst_01_desa.png" id="9_mxi2p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnsya"]
+shader = ExtResource("1_w1com")
+shader_parameter/spawn_rate = 65.0
+shader_parameter/lifetime_min = 0.5
+shader_parameter/lifetime_max = 4.0
+shader_parameter/velocity_min = 10.0
+shader_parameter/velocity_max = 50.0
+shader_parameter/cone_angle_max = 35.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 0.1
+shader_parameter/sprite_size_max = 5.0
+shader_parameter/color_intensity_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cmdp"]
+render_priority = 0
+shader = ExtResource("2_wj30h")
+shader_parameter/ember_texture = ExtResource("9_mxi2p")
+shader_parameter/emission_strength = 3.0
+shader_parameter/use_sub_images = true
+shader_parameter/sub_image_size = Vector2(2, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rfbfv"]
+material = SubResource("ShaderMaterial_1cmdp")
+size = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx4ye"]
+shader = ExtResource("4_prrm6")
+shader_parameter/spawn_rate = 1.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 1.75
+shader_parameter/origin_ring_radius = 10.0
+shader_parameter/sprite_size = 30.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntw4x"]
+render_priority = 0
+shader = ExtResource("5_b4413")
+shader_parameter/distortion_noise = ExtResource("6_icby2")
+shader_parameter/distortion_strength = 0.009
+shader_parameter/noise_scale = 2.0
+shader_parameter/scroll_speed = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_05vyg"]
+material = SubResource("ShaderMaterial_ntw4x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5aryl"]
+shader = ExtResource("7_s8r5l")
+shader_parameter/lifetime_min = 0.5
+shader_parameter/lifetime_max = 1.0
+shader_parameter/sprite_size_min = 20.0
+shader_parameter/sprite_size_max = 40.0
+shader_parameter/alpha_min = 0.6
+shader_parameter/alpha_max = 0.9
+shader_parameter/color_intensity = 200.0
+shader_parameter/spawn_area = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h66h4"]
+render_priority = 0
+shader = ExtResource("8_rvawd")
+shader_parameter/fire_texture = ExtResource("9_mxi2p")
+shader_parameter/emission_strength = 2.5
+shader_parameter/columns = 8
+shader_parameter/rows = 8
+
+[sub_resource type="QuadMesh" id="QuadMesh_x87op"]
+material = SubResource("ShaderMaterial_h66h4")
+
+[node name="FireParticles" type="Node3D" unique_id=386491799]
+
+[node name="Embers" type="GPUParticles3D" parent="." unique_id=1274637781]
+transform = Transform3D(1.59, 0, 0, 0, -0.00366317, -1.5899957, 0, 1.5899957, -0.00366317, 0, 0.081539825, 0.3905096)
+amount = 65
+lifetime = 2.25
+visibility_aabb = AABB(-1.2655814, -1.1295991, -1.3666742, 2.6694856, 3.2759209, 2.9156451)
+local_coords = true
+process_material = SubResource("ShaderMaterial_rnsya")
+draw_pass_1 = SubResource("QuadMesh_rfbfv")
+
+[node name="HeatDistortion" type="GPUParticles3D" parent="." unique_id=1448470691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005215198, 0.03533207, 0.21421915)
+amount = 4
+lifetime = 1.375
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+local_coords = true
+process_material = SubResource("ShaderMaterial_hx4ye")
+draw_pass_1 = SubResource("QuadMesh_05vyg")
+
+[node name="Smoke" type="GPUParticles3D" parent="." unique_id=1938498929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0025944188, 0.061039343, 0.20923784)
+amount = 3
+lifetime = 2.0
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+process_material = SubResource("ShaderMaterial_5aryl")
+draw_pass_1 = SubResource("QuadMesh_x87op")

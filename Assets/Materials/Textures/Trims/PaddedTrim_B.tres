@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://bed6ma03hxcos"]
+
+[ext_resource type="Texture2D" uid="uid://cqoev5j5big86" path="res://Objects/Materials/Trims/Other/T_PaddedTrim_B_BC.png" id="1_ojyhs"]
+[ext_resource type="Texture2D" uid="uid://ckpmlkxewdmbw" path="res://Objects/Materials/Trims/Other/T_PaddedTrim_B_N.png" id="2_havkt"]
+[ext_resource type="Texture2D" uid="uid://cqtw71xa2op40" path="res://Objects/Materials/Trims/Other/T_PaddedTrim_B_ORMK.png" id="3_8gmn4"]
+
+[resource]
+albedo_texture = ExtResource("1_ojyhs")
+orm_texture = ExtResource("3_8gmn4")
+normal_enabled = true
+normal_texture = ExtResource("2_havkt")

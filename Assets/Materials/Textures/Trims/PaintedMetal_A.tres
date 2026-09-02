@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://bkm354me2b772"]
+
+[ext_resource type="Texture2D" uid="uid://dfghwx22wni0m" path="res://Decoration/Materials/Textures/Metal/T_PaintedMetal_A_BC.png" id="1_gwwq8"]
+[ext_resource type="Texture2D" uid="uid://dmgl4rcctrb3x" path="res://Decoration/Materials/Textures/Metal/T_PaintedMetal_A_N.png" id="2_1vi58"]
+[ext_resource type="Texture2D" uid="uid://d1obat8gpqt6d" path="res://Decoration/Materials/Textures/Metal/T_PaintedMetal_A_ORMK.png" id="3_n3u46"]
+
+[resource]
+albedo_texture = ExtResource("1_gwwq8")
+orm_texture = ExtResource("3_n3u46")
+normal_enabled = true
+normal_texture = ExtResource("2_1vi58")

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cqojby6hce4rs"]
+
+[ext_resource type="Shader" uid="uid://dvtxaqsbmogsb" path="res://Character/Shaders/blacklight.gdshader" id="1_j3dba"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j3dba")
+shader_parameter/preview_mode = true
+shader_parameter/highlight_color = Color(0.85, 0.25, 0.95, 1)
+shader_parameter/black_cutoff = 0.0
+shader_parameter/chalk_grain_amount = 0.410000019475
+shader_parameter/glow_intensity = 3.0
+shader_parameter/base_color = Color(0.6499996, 0, 1, 1)

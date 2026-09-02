@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dnouy1atsu7ki" path="res://Mechanics/player_height_ref.tscn" id="1_g7y47"]
 [ext_resource type="PackedScene" uid="uid://bqnno40vlx5ty" path="res://Character/bp_player.tscn" id="1_je83y"]
-[ext_resource type="Texture2D" uid="uid://b3ycywo0hbigd" path="res://Assets/SkyTextures/AllSkyFree_Sky_ColdSunset_Equirect.png" id="1_p7haa"]
 [ext_resource type="Script" uid="uid://d2m4c6u08r48w" path="res://Maps/Scripts/map_01.gd" id="1_pin4f"]
 [ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_blur_stage.tres" id="2_45mtm"]
 [ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/sphynx_motion_blur_toolkit/guertin/shader_stages/guertin_neighbor_max_stage.tres" id="3_8gqnk"]
@@ -23,30 +22,25 @@
 [sub_resource type="CompressedTexture3D" id="CompressedTexture3D_q3657"]
 load_path = "res://.godot/imported/VT_Level1-8.hdr-d10dea292a0b5ed9b118f3cdc85abbb4.ctex3d"
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a46gh"]
-panorama = ExtResource("1_p7haa")
-
-[sub_resource type="Sky" id="Sky_yufqg"]
-sky_material = SubResource("PanoramaSkyMaterial_a46gh")
-
 [sub_resource type="Environment" id="Environment_q6y5p"]
-background_mode = 2
-sky = SubResource("Sky_yufqg")
+background_mode = 1
 tonemap_mode = 4
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
+glow_normalized = true
 glow_intensity = 0.51
 glow_bloom = 0.1
+glow_blend_mode = 2
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.9999997, 0.9310378, 0.9088107, 1)
 volumetric_fog_emission = Color(0.19434929, 0.19434926, 0.19434926, 1)
 volumetric_fog_sky_affect = 0.705
 adjustment_enabled = true
-adjustment_brightness = 1.07
+adjustment_brightness = 1.28
 adjustment_contrast = 1.25
 adjustment_saturation = 0.9
 adjustment_color_correction = SubResource("CompressedTexture3D_q3657")
@@ -59,8 +53,6 @@ effect_callback_type = 4
 needs_motion_vectors = true
 needs_normal_roughness = false
 script = ExtResource("6_pin4f")
-tile_size = 35
-intensity = 0.85
 shader_stages/blur_stage = ExtResource("2_45mtm")
 shader_stages/overlay_stage = ExtResource("4_o5hoj")
 shader_stages/tile_max_x_stage = ExtResource("7_0cqi6")
@@ -141,6 +133,7 @@ script = ExtResource("1_pin4f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=910559500]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=884635133]
@@ -149,16 +142,116 @@ compositor = SubResource("Compositor_yufqg")
 
 [node name="BP_Player" parent="." unique_id=615822354 instance=ExtResource("1_je83y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7234397, 0, 6.433826)
+starting_index = 0
 
 [node name="PlayerHeightRef" parent="." unique_id=152060713 instance=ExtResource("1_g7y47")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.667227, 4.7683716e-07, -10.357099)
+visible = false
+
+[node name="Light" type="Node3D" parent="." unique_id=1971463690]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Light" unique_id=85829262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 3.0235782, 4.3325214)
+light_color = Color(1, 0.92156863, 0.9529412, 1)
+light_energy = 0.395
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 5.681116
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Light" unique_id=1019381883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 3.137627, -2.4789238)
+light_color = Color(1, 0.92156863, 0.9529412, 1)
+light_energy = 0.475
+shadow_enabled = true
+omni_range = 7.290412
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Light" unique_id=1796930811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.016281, 3.137627, -2.4789238)
+light_color = Color(1, 0.92156863, 0.9529412, 1)
+light_energy = 0.475
+shadow_enabled = true
+omni_range = 7.290412
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Light" unique_id=1589925096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9293, 3.137627, -2.4789238)
+light_color = Color(1, 0.92156863, 0.9529412, 1)
+light_energy = 0.475
+shadow_enabled = true
+omni_range = 7.290412
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Light" unique_id=803688221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.09274, 3.137627, -6.9677)
+light_color = Color(1, 0.92156863, 0.9529412, 1)
+light_energy = 0.475
+shadow_enabled = true
+omni_range = 7.290412
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Light" unique_id=321437848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.433517, 2.4734201, -16.216103)
+light_color = Color(1, 0.92156863, 0.9529412, 1)
+light_energy = 0.475
+shadow_enabled = true
+omni_range = 19.306223
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Light" unique_id=1192122189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.708149, 2.625949, -9.279314)
+light_color = Color(1, 0.7529412, 0.73333335, 1)
+light_energy = 0.475
+shadow_enabled = true
+omni_range = 10.074688
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Light" unique_id=1473840152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.398424, 6.1897454, -2.4789238)
+light_color = Color(1, 0.96862745, 0, 1)
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 4.2577705
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Light" unique_id=173839333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.191488, 2.5562139, -20.755537)
+light_color = Color(1, 0.96862745, 0, 1)
+light_energy = 0.37
+shadow_enabled = true
+omni_range = 5.958234
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Light" unique_id=1902500687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5982714, 2.893427, -13.475014)
+light_color = Color(1, 0, 0, 1)
+light_volumetric_fog_energy = 3.0
+shadow_enabled = true
+omni_range = 15.935423
 
 [node name="LevelTemplate" type="Node3D" parent="." unique_id=1833215374]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelTemplate" unique_id=672122152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.721283, -7.95874, 1.4375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9166718, -7.95874, 1.4375)
 use_collision = true
-size = Vector3(3.4553833, 15.91748, 13.125)
+size = Vector3(3.0646057, 15.91748, 13.125)
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="LevelTemplate" unique_id=1269769027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9166718, 0.89344215, 7.7783813)
+use_collision = true
+size = Vector3(4.388916, 15.91748, 0.4432373)
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="LevelTemplate" unique_id=546875418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.586613, -3.4135895, 4.185913)
+use_collision = true
+size = Vector3(27.745487, 25.007782, 7.628174)
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="LevelTemplate" unique_id=546680150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.734166, 8.571298, 1.1859741)
+use_collision = true
+size = Vector3(31.45038, 1.0380077, 13.628052)
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="LevelTemplate" unique_id=2085990071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.806608, 6.873081, -2.6320152)
+use_collision = true
+size = Vector3(7.30549, 4.4344406, 6.294136)
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="LevelTemplate" unique_id=770107053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.738937, 8.940615, -9.183427)
+use_collision = true
+size = Vector3(13.440831, 0.29937363, 7.2600574)
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="LevelTemplate" unique_id=1397288560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06385422, 1.0520821, 1.1752319)
@@ -166,9 +259,9 @@ use_collision = true
 size = Vector3(0.67788696, 15.91748, 13.649536)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelTemplate" unique_id=722627181]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.131866, -7.36792, -2.578247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.131866, -7.36792, -2.5645752)
 use_collision = true
-size = Vector3(3.4553833, 14.73584, 5.125)
+size = Vector3(3.4553833, 14.73584, 5.0976563)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelTemplate" unique_id=1475534928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4840126, -0.030792236, -2.578247)
@@ -201,9 +294,9 @@ use_collision = true
 size = Vector3(0.39936256, 5.147751, 17.875)
 
 [node name="CSGBox3D32" type="CSGBox3D" parent="LevelTemplate" unique_id=1080320486]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.11224, 4.772007, -14.922238)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.149971, 6.847316, -14.922238)
 use_collision = true
-size = Vector3(5.9218493, 0.28591156, 18.362305)
+size = Vector3(5.997308, 4.436529, 18.362305)
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="LevelTemplate" unique_id=1939842125]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.11224, 4.1012974, -18.622189)
@@ -275,9 +368,9 @@ use_collision = true
 size = Vector3(0.42320347, 14.204681, 9.450235)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="LevelTemplate" unique_id=1852781830]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 31.590101, 1.4159813, -11.615406)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 31.590101, 1.4159813, -12.16314)
 use_collision = true
-size = Vector3(0.42320347, 3.4352036, 2.8364458)
+size = Vector3(0.42320347, 3.4352036, 1.7409768)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="LevelTemplate" unique_id=1160976409]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 24.713623, 2.0411987, -22.289152)
@@ -326,17 +419,12 @@ size = Vector3(1.568512, 0.061584473, 5.125)
 
 [node name="Machanics" type="Node3D" parent="." unique_id=479859719]
 
-[node name="GrabHandle" parent="Machanics" unique_id=1444149643 instance=ExtResource("11_45mtm")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.6712265, 9.228101, -1.6864381)
-swing_type = 1
-outline = true
-
 [node name="GrabHandle2" parent="Machanics" unique_id=1997117724 instance=ExtResource("11_45mtm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 8.742278e-08, -4.371139e-08, -1, -3.821371e-15, -1, 4.371139e-08, 29.20067, 2.440357, -22.124193)
 outline = true
 
 [node name="GrabHandle3" parent="Machanics" unique_id=1758034433 instance=ExtResource("11_45mtm")]
-transform = Transform3D(4.3711395e-08, 1, -4.371138e-08, 8.742278e-08, -4.3711392e-08, -1, -1, 4.371139e-08, -8.742278e-08, 31.473436, 2.440357, -1.9592297)
+transform = Transform3D(4.3711395e-08, 1, -4.371138e-08, 8.742278e-08, -4.3711392e-08, -1, -1, 4.371139e-08, -8.742278e-08, 24.164373, 6.3508177, -2.6192145)
 outline = true
 
 [node name="HandScanner" parent="Machanics" unique_id=1688616220 instance=ExtResource("13_ux5k6")]
@@ -345,7 +433,8 @@ is_off = true
 is_left = false
 
 [node name="PowerOutlet" parent="Machanics" unique_id=1373376736 instance=ExtResource("12_8gqnk")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.413939, 1.5302887, -11.605288)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.413939, 1.5224559, -12.204261)
+color_preset = 0
 
 [node name="power_pole" parent="Machanics" unique_id=2125900006 instance=ExtResource("13_o5hoj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.752537, 2.7768417e-07, -20.059855)
@@ -374,7 +463,8 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.29
 libraries/ = SubResource("AnimationLibrary_pin4f")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1558858099]
-transform = Transform3D(-0.821551, 0, -0.570135, 0, 1, 0, 0.570135, 0, -0.821551, 8.191826, 1.26414, 1.313468)
+transform = Transform3D(-0.9999831, 0, 0.0058178157, 0, 1, 0, -0.0058178157, 0, -0.9999831, 6.9814835, 1.6115798, -0.03311603)
+visible = false
 pixel_size = 0.0085
 double_sided = false
 text = "This Mechanic is still HELLA buggy and 
