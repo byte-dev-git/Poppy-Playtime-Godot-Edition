@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bjce75r1m6ypo"]
+
+[ext_resource type="Shader" uid="uid://3ce65ethqlaa" path="res://Mechanics/Cable/cable_power.gdshader" id="1_4r7ti"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4r7ti")
+shader_parameter/color_base = Color(0.08, 0.08, 0.08, 1)
+shader_parameter/color_stripe = Color(1, 0.1, 0.1, 1)
+shader_parameter/roughness = 0.4
+shader_parameter/cable_length = 0.845
+shader_parameter/frequency = 17.16400076779
+shader_parameter/stripe_ratio = 0.64400002989148
+shader_parameter/stripe_softness = 0.0010000000475
+shader_parameter/speed = 1.0
+shader_parameter/invert_direction = false
+shader_parameter/use_uv_x = true
+shader_parameter/fill_amount = 0.0
+shader_parameter/fill_feather = 0.17200000817
+shader_parameter/curtain_folds = 0
+shader_parameter/curtain_wave_size = 0.03
+shader_parameter/active_tint = Color(0, 1.9964589, 3.1672676, 1)
+shader_parameter/active_brightness = 1.5
+shader_parameter/active_emission_energy = 20.0
+shader_parameter/base_emission_energy = 1.98800009443
