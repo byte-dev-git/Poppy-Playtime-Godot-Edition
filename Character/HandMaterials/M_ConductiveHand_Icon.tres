@@ -1,0 +1,16 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://dfgo1ipfsxowm"]
+
+[ext_resource type="Texture2D" uid="uid://va3h8ly3tlqj" path="res://Character/HandMaterials/Textures/T_ConductiveHand_Icons_BC.png" id="1_7kdk4"]
+[ext_resource type="Texture2D" uid="uid://bx0u0idnpc6fl" path="res://Character/HandMaterials/Textures/T_ConductiveHand_Icon_BNT.png" id="2_04mbk"]
+[ext_resource type="Texture2D" uid="uid://dfehlck45ap5n" path="res://Character/HandMaterials/Textures/T_ConductiveHand_Icon_N.png" id="3_nkhpu"]
+[ext_resource type="Texture2D" uid="uid://to7nppo4fyk4" path="res://Character/HandMaterials/Textures/T_ConductiveHand_Icon_ORM.png" id="4_je8i2"]
+
+[resource]
+albedo_texture = ExtResource("1_7kdk4")
+orm_texture = ExtResource("4_je8i2")
+normal_enabled = true
+normal_texture = ExtResource("3_nkhpu")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("2_04mbk")
+uv1_scale = Vector3(0.253, 0.506, 0.253)
+uv1_offset = Vector3(1, 0.3, 0)

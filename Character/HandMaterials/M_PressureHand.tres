@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d10a63y2x1dd8"]
+
+[ext_resource type="Shader" uid="uid://56nn8jfk7qsj" path="res://Character/Shaders/material_orm.gdshader" id="1_andfs"]
+[ext_resource type="Texture2D" uid="uid://c0gkwu1cchyq4" path="res://Character/HandMaterials/Textures/T_PressureHand_BC.png" id="2_ebcxq"]
+[ext_resource type="Texture2D" uid="uid://co06eipxhpks7" path="res://Character/HandMaterials/Textures/T_PressureHand_BNT.png" id="3_pdh7a"]
+[ext_resource type="Texture2D" uid="uid://i2px25np6no1" path="res://Character/HandMaterials/Textures/T_PressureHand_N.png" id="4_l5phn"]
+[ext_resource type="Texture2D" uid="uid://bax3aptalrcyo" path="res://Character/HandMaterials/Textures/T_PressureHand_ORM.png" id="5_gggt6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_andfs")
+shader_parameter/albedo = ExtResource("2_ebcxq")
+shader_parameter/normal = ExtResource("4_l5phn")
+shader_parameter/bent_normal = ExtResource("3_pdh7a")
+shader_parameter/orm = ExtResource("5_gggt6")
+shader_parameter/flip_normal_y = true
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness_scale = 1.0
+shader_parameter/metallic_scale = 1.0
+shader_parameter/ao_amount = 1.0
+shader_parameter/anisotropy = 0.5000000712500001
+shader_parameter/specular = 0.400000019

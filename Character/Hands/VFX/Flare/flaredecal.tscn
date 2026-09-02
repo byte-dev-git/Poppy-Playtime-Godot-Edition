@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://1r3vp1gw7l0r"]
+
+[ext_resource type="Shader" uid="uid://bdt2u8oosvgs3" path="res://Character/Hands/VFX/Flare/flare_decal_shader.gdshader" id="4_wy080"]
+[ext_resource type="Texture2D" uid="uid://b754hx4j2h1v4" path="res://Character/Hands/VFX/Flare/T_Fireball_OuterShell_BaseColor.png" id="5_ebqa5"]
+[ext_resource type="Material" uid="uid://jvqcw67hchds" path="res://Assets/Materials/M_PrototypeMaterial_White.tres" id="5_xou5s"]
+[ext_resource type="Texture2D" uid="uid://fmidvhoqbhof" path="res://Character/Hands/VFX/Flare/T_Noise_8.png" id="6_2l3lu"]
+[ext_resource type="Texture2D" uid="uid://pvdfles012li" path="res://Character/Hands/VFX/Flare/T_AshParticleShape.png" id="7_eceyw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xou5s"]
+size = Vector2(0.22, 0.22)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xou5s"]
+render_priority = 0
+shader = ExtResource("4_wy080")
+shader_parameter/shape_tex = ExtResource("7_eceyw")
+shader_parameter/noise_tex = ExtResource("6_2l3lu")
+shader_parameter/fire_tex = ExtResource("5_ebqa5")
+shader_parameter/shape_scale = Vector2(3.5, 3.5)
+shader_parameter/noise_scale = Vector2(1, 1)
+shader_parameter/fire_scale = Vector2(6, 6)
+shader_parameter/erosion = 0.10000000475
+shader_parameter/contrast = 0.5
+shader_parameter/ccontrast = 0.3
+shader_parameter/burn_color = Color(0, 0, 0, 1)
+shader_parameter/embers_color = Color(4, 1, 0, 1)
+shader_parameter/emission_energy = 0.050000002375
+shader_parameter/rotation_degrees = 0.0
+
+[sub_resource type="GDScript" id="GDScript_djfxo"]
+script/source = "extends MeshInstance3D
+
+func _process(_delta):
+	if get_viewport() and get_viewport().get_camera_3d():
+		var cam = get_viewport().get_camera_3d()
+		look_at(global_transform.origin + cam.global_transform.basis.z, Vector3.UP)
+"
+
+[node name="Decal" type="Node3D" unique_id=716925668]
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1457222610]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.05, 0)
+mesh = SubResource("QuadMesh_xou5s")
+surface_material_override/0 = SubResource("ShaderMaterial_xou5s")
+script = SubResource("GDScript_djfxo")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=491592849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+material = ExtResource("5_xou5s")

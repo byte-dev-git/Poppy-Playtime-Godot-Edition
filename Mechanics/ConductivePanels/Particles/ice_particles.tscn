@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://xpknf24u3myy"]
+
+[ext_resource type="Shader" uid="uid://c4oys754821rk" path="res://Objects/Gameplay/ConductivePanel/Particles/snowflakes_particle.gdshader" id="1_rhlta"]
+[ext_resource type="Shader" uid="uid://eo33m2h1c58f" path="res://Objects/Gameplay/ConductivePanel/Particles/snowflakes_material.gdshader" id="2_a22il"]
+[ext_resource type="Shader" uid="uid://cfm3aaamjrw6e" path="res://Objects/Gameplay/ConductivePanel/Particles/cold_smoke_particle.gdshader" id="4_3py2t"]
+[ext_resource type="Shader" uid="uid://bnminh0yjn6a6" path="res://Objects/Gameplay/ConductivePanel/Particles/cold_smoke_material.gdshader" id="5_i85mo"]
+[ext_resource type="Texture2D" uid="uid://bd5puox2kt4qa" path="res://Objects/Gameplay/ConductivePanel/Particles/T_Game_FireSetup_s.png" id="6_1a3aw"]
+
+[sub_resource type="Curve" id="Curve_nfxva"]
+_data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.15, 1), 0.0, 0.0, 0, 0, Vector2(0.85, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_0wtjq"]
+curve = SubResource("Curve_nfxva")
+
+[sub_resource type="Curve" id="Curve_nn2d0"]
+_limits = [0.0, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 50), 0.0, -50.0, 0, 0, Vector2(0.5, 27), -30.0, -30.0, 0, 0, Vector2(1, 1), -10.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_arn6k"]
+curve = SubResource("Curve_nn2d0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wt7gy"]
+shader = ExtResource("1_rhlta")
+shader_parameter/spawn_rate = 30.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 3.0
+shader_parameter/velocity_min = 5.0
+shader_parameter/velocity_max = 15.0
+shader_parameter/cone_angle_max = 60.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 1.0
+shader_parameter/sprite_size_max = 3.0
+shader_parameter/color_intensity_scale = 1.5
+shader_parameter/alpha_curve = SubResource("CurveTexture_0wtjq")
+shader_parameter/size_curve = SubResource("CurveTexture_arn6k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrrwo"]
+render_priority = 0
+shader = ExtResource("2_a22il")
+shader_parameter/snowflake_texture = ExtResource("6_1a3aw")
+shader_parameter/emission_strength = 2.0
+shader_parameter/columns = 8
+shader_parameter/rows = 6
+
+[sub_resource type="QuadMesh" id="QuadMesh_8lrdu"]
+material = SubResource("ShaderMaterial_lrrwo")
+
+[sub_resource type="Curve" id="Curve_5xb7k"]
+_data = [Vector2(0, 0), 0.0, 4.0, 0, 0, Vector2(0.25, 0.664), 1.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, -1.0, 0, 0, Vector2(0.75, 0.703), -1.0, -1.0, 0, 0, Vector2(1, 0), -4.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_tbdxd"]
+curve = SubResource("Curve_5xb7k")
+
+[sub_resource type="Curve" id="Curve_luxen"]
+_data = [Vector2(0, 0.3), 0.0, 1.5, 0, 0, Vector2(0.5, 0.7), 1.0, 0.8, 0, 0, Vector2(1, 1), 0.3, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pmfhx"]
+curve = SubResource("Curve_luxen")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ej6vp"]
+shader = ExtResource("4_3py2t")
+shader_parameter/spawn_rate = 25.0
+shader_parameter/lifetime_min = 1.5
+shader_parameter/lifetime_max = 2.0
+shader_parameter/sprite_size_min = 15.0
+shader_parameter/sprite_size_max = 30.0
+shader_parameter/alpha_min = 0.01
+shader_parameter/alpha_max = 0.056
+shader_parameter/color_intensity = 100.0
+shader_parameter/velocity_min = Vector3(0, 5, 0)
+shader_parameter/velocity_max = Vector3(0, 10, 0)
+shader_parameter/spawn_area = 0.02
+shader_parameter/alpha_curve = SubResource("CurveTexture_tbdxd")
+shader_parameter/scale_curve = SubResource("CurveTexture_pmfhx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy42i"]
+render_priority = 0
+shader = ExtResource("5_i85mo")
+shader_parameter/smoke_texture = ExtResource("6_1a3aw")
+shader_parameter/emission_strength = 2.0
+shader_parameter/erosion_amount = 0.3
+shader_parameter/columns = 8
+shader_parameter/rows = 8
+shader_parameter/light_direction = Vector3(0.3, -1, 0.2)
+shader_parameter/light_color = Vector3(0.45, 0.85, 1)
+shader_parameter/light_intensity = 1.0
+shader_parameter/ambient_color = Vector3(0.2, 0.35, 0.6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_51km3"]
+material = SubResource("ShaderMaterial_uy42i")
+
+[node name="IceParticles" type="Node3D" unique_id=1177649171]
+
+[node name="Snowflakes" type="GPUParticles3D" parent="." unique_id=1346446625]
+transform = Transform3D(5.7691803, 0, 0, 0, 6.026599, 0, 0, 0, 3.12, 0.008536592, 0.046885878, 0.33258417)
+amount = 30
+lifetime = 2.0
+visibility_aabb = AABB(-0.22, -0.205, -0.33, 0.435, 0.4, 0.69)
+local_coords = true
+process_material = SubResource("ShaderMaterial_wt7gy")
+draw_pass_1 = SubResource("QuadMesh_8lrdu")
+
+[node name="ColdSmoke" type="GPUParticles3D" parent="." unique_id=1184452024]
+transform = Transform3D(6.8458242, 0, 0, 0, 8.855818, 0, 0, 0, -0.053166702, 3.437698e-05, -0.03057228, 0.20808515)
+amount = 15
+lifetime = 1.75
+visibility_aabb = AABB(-0.415, -2, -2, 0.685, 2.05, 0.525)
+local_coords = true
+process_material = SubResource("ShaderMaterial_ej6vp")
+draw_pass_1 = SubResource("QuadMesh_51km3")

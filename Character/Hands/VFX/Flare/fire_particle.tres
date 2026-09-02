@@ -1,0 +1,10 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=0 format=3 uid="uid://4jakwk4h5qwd"]
+
+[resource]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 1.99998
+gravity = Vector3(0, 1, 0)
+turbulence_enabled = true

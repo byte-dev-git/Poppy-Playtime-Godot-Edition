@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cg053vk3osm07"]
+
+[ext_resource type="Shader" uid="uid://c3vrkei5qtye" path="res://Objects/VFX/panels/heat/embers_particle.gdshader" id="1_ykdsv"]
+[ext_resource type="Shader" uid="uid://nm2s3iiluxns" path="res://Objects/VFX/panels/heat/embers_material.gdshader" id="2_bmcu6"]
+[ext_resource type="Texture2D" uid="uid://dtt4rca7akuty" path="res://Interface/MainMenu/T_Embers_01.png" id="3_1cmdp"]
+[ext_resource type="Shader" uid="uid://drdi353olt3xb" path="res://Objects/VFX/panels/heat/heat_distortion_particle.gdshader" id="3_jdsr4"]
+[ext_resource type="Shader" uid="uid://c5ldlfsssgag1" path="res://Objects/VFX/panels/heat/smoke_particle.gdshader" id="4_hdfs0"]
+[ext_resource type="Shader" uid="uid://dmrrdiwnr3wx3" path="res://Objects/VFX/panels/heat/heat_distortion_material.gdshader" id="5_luy1t"]
+[ext_resource type="Texture2D" uid="uid://bv1ef7ii5q0sr" path="res://Objects/VFX/panels/heat/T_NoiseNormal_VFX_01.png" id="6_xmif5"]
+[ext_resource type="Shader" uid="uid://cb48h402e5e5s" path="res://Objects/VFX/panels/heat/smoke_material.gdshader" id="8_nw2iw"]
+[ext_resource type="Texture2D" uid="uid://cjdutan3ql0ix" path="res://Objects/VFX/panels/heat/T_SimpleFire_Burst_01_desa.png" id="9_wiuco"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mvqh"]
+shader = ExtResource("1_ykdsv")
+shader_parameter/spawn_rate = 65.0
+shader_parameter/lifetime_min = 0.5
+shader_parameter/lifetime_max = 4.0
+shader_parameter/velocity_min = 10.0
+shader_parameter/velocity_max = 50.0
+shader_parameter/cone_angle_max = 30.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 2.0
+shader_parameter/sprite_size_max = 3.0
+shader_parameter/color_intensity_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cmdp"]
+render_priority = 0
+shader = ExtResource("2_bmcu6")
+shader_parameter/ember_texture = ExtResource("3_1cmdp")
+shader_parameter/emission_strength = 3.0
+shader_parameter/use_sub_images = true
+shader_parameter/sub_image_size = Vector2(2, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_luy1t"]
+material = SubResource("ShaderMaterial_1cmdp")
+size = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmif5"]
+shader = ExtResource("3_jdsr4")
+shader_parameter/spawn_rate = 1.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 1.75
+shader_parameter/origin_ring_radius = 10.0
+shader_parameter/sprite_size = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irhsw"]
+render_priority = 0
+shader = ExtResource("5_luy1t")
+shader_parameter/distortion_noise = ExtResource("6_xmif5")
+shader_parameter/distortion_strength = 0.02
+shader_parameter/noise_scale = 2.0
+shader_parameter/scroll_speed = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_1d6y5"]
+material = SubResource("ShaderMaterial_irhsw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j868u"]
+shader = ExtResource("4_hdfs0")
+shader_parameter/spawn_rate = 50.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 2.0
+shader_parameter/sprite_size_min = 25.0
+shader_parameter/sprite_size_max = 30.0
+shader_parameter/alpha_min = 0.2
+shader_parameter/alpha_max = 0.3
+shader_parameter/color_intensity = 100.0
+shader_parameter/velocity_min = Vector3(0, 5, 0)
+shader_parameter/velocity_max = Vector3(0, 10, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3172m"]
+render_priority = 0
+shader = ExtResource("8_nw2iw")
+shader_parameter/fire_texture = ExtResource("9_wiuco")
+shader_parameter/emission_strength = 1.5
+shader_parameter/columns = 8
+shader_parameter/rows = 8
+
+[sub_resource type="QuadMesh" id="QuadMesh_6o8v2"]
+material = SubResource("ShaderMaterial_3172m")
+
+[node name="NS_CHPanel_HeatPowerIdle" type="Node3D" unique_id=117917322]
+transform = Transform3D(215.47, 0, 0, 0, 215.47, 0, 0, 0, 215.47, 0, 0, 0)
+
+[node name="Embers" type="GPUParticles3D" parent="." unique_id=1464968971]
+amount = 65
+lifetime = 2.25
+visibility_aabb = AABB(-1.2655814, -1.1295991, -1.3666742, 2.6694856, 3.2759209, 2.9156451)
+local_coords = true
+process_material = SubResource("ShaderMaterial_5mvqh")
+draw_pass_1 = SubResource("QuadMesh_luy1t")
+
+[node name="HeatDistortion" type="GPUParticles3D" parent="." unique_id=1669876699]
+amount = 4
+lifetime = 1.375
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+local_coords = true
+process_material = SubResource("ShaderMaterial_xmif5")
+draw_pass_1 = SubResource("QuadMesh_1d6y5")
+
+[node name="Smoke" type="GPUParticles3D" parent="." unique_id=141885674]
+amount = 30
+lifetime = 1.5
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+process_material = SubResource("ShaderMaterial_j868u")
+draw_pass_1 = SubResource("QuadMesh_6o8v2")

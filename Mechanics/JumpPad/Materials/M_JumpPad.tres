@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dg4taty3ip4u3"]
+
+[ext_resource type="Texture2D" uid="uid://d3xxfjkan8x27" path="res://Mechanics/JumpPad/Materials/Textures/T_Jump_Pad_BC.png" id="1_xiqd1"]
+[ext_resource type="Texture2D" uid="uid://du1hk257lngjr" path="res://Mechanics/JumpPad/Materials/Textures/T_Jump_Pad_N.png" id="2_xiqd1"]
+
+[resource]
+albedo_texture = ExtResource("1_xiqd1")
+metallic = 0.45
+roughness = 0.38
+emission_enabled = true
+normal_enabled = true
+normal_texture = ExtResource("2_xiqd1")
+anisotropy_enabled = true
+anisotropy = 0.5
+ao_enabled = true
+ao_light_affect = 1.0

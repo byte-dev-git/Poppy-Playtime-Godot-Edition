@@ -1,16 +1,22 @@
-[gd_resource type="ORMMaterial3D" format=3 uid="uid://bbli3mk1jmb6x"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bbli3mk1jmb6x"]
 
+[ext_resource type="Shader" uid="uid://56nn8jfk7qsj" path="res://Character/Shaders/material_orm.gdshader" id="1_03q0n"]
 [ext_resource type="Texture2D" uid="uid://b3btgpeb0w6bw" path="res://Character/HandMaterials/Textures/T_BlueHandOld_BC.png" id="1_n4jjq"]
 [ext_resource type="Texture2D" uid="uid://dwuejjo04jqvj" path="res://Character/HandMaterials/Textures/T_BlueHandOld_BNT.png" id="2_03q0n"]
 [ext_resource type="Texture2D" uid="uid://5m8tuos3rijv" path="res://Character/HandMaterials/Textures/T_BlueHandOld_N.png" id="3_77k0g"]
 [ext_resource type="Texture2D" uid="uid://clqynmxnsiff7" path="res://Character/HandMaterials/Textures/T_BlueHandOld_ORM.png" id="4_dxfsb"]
 
 [resource]
-albedo_texture = ExtResource("1_n4jjq")
-orm_texture = ExtResource("4_dxfsb")
-normal_enabled = true
-normal_texture = ExtResource("3_77k0g")
-bent_normal_enabled = true
-bent_normal_texture = ExtResource("2_03q0n")
-ao_enabled = true
-ao_light_affect = 1.0
+render_priority = 0
+shader = ExtResource("1_03q0n")
+shader_parameter/albedo = ExtResource("1_n4jjq")
+shader_parameter/normal = ExtResource("3_77k0g")
+shader_parameter/bent_normal = ExtResource("2_03q0n")
+shader_parameter/orm = ExtResource("4_dxfsb")
+shader_parameter/flip_normal_y = true
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness_scale = 1.0
+shader_parameter/metallic_scale = 1.0
+shader_parameter/ao_amount = 1.0
+shader_parameter/anisotropy = 0.5000000712500001
+shader_parameter/specular = 0.400000019

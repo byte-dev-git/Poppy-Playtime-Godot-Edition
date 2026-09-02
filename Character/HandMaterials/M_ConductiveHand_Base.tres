@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cm0712231gqil"]
+
+[ext_resource type="Shader" uid="uid://56nn8jfk7qsj" path="res://Character/Shaders/material_orm.gdshader" id="1_od4hr"]
+[ext_resource type="Texture2D" uid="uid://bybqdo2u5tfy0" path="res://Character/HandMaterials/Textures/T_Conductive_Hand_ID.png" id="1_q83kt"]
+[ext_resource type="Texture2D" uid="uid://df4h7musll3ih" path="res://Character/HandMaterials/Textures/T_Conductive_Hand_BC.png" id="2_q83kt"]
+[ext_resource type="Texture2D" uid="uid://buoye60r1ujjr" path="res://Character/HandMaterials/Textures/T_Conductive_Hand_BNT.png" id="3_r8jju"]
+[ext_resource type="Texture2D" uid="uid://c2d7677y60g62" path="res://Character/HandMaterials/Textures/T_Conductive_Hand_N.png" id="4_y7rmn"]
+[ext_resource type="Texture2D" uid="uid://cghf13s38knpb" path="res://Character/HandMaterials/Textures/T_Conductive_Hand_ORM.png" id="5_qgc0g"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_od4hr")
+shader_parameter/albedo = ExtResource("2_q83kt")
+shader_parameter/normal = ExtResource("4_y7rmn")
+shader_parameter/bent_normal = ExtResource("3_r8jju")
+shader_parameter/orm = ExtResource("5_qgc0g")
+shader_parameter/emission_texture = ExtResource("1_q83kt")
+shader_parameter/flip_normal_y = true
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness_scale = 1.0
+shader_parameter/metallic_scale = 1.0
+shader_parameter/ao_amount = 1.0
+shader_parameter/anisotropy = 0.5000000712500001
+shader_parameter/specular = 0.400000019
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 0.0

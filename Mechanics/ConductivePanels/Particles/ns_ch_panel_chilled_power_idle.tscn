@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bo4dfq2ufjtdy"]
+
+[ext_resource type="Shader" uid="uid://d3ch2onodj75h" path="res://Objects/VFX/panels/cold/snowflakes_particle.gdshader" id="1_w0y02"]
+[ext_resource type="Shader" uid="uid://cyatje5o5jqwe" path="res://Objects/VFX/panels/cold/snowflakes_material.gdshader" id="2_f4d75"]
+[ext_resource type="Texture2D" uid="uid://dtt4rca7akuty" path="res://Interface/MainMenu/T_Embers_01.png" id="3_5nd0h"]
+[ext_resource type="Shader" uid="uid://1bmj3rdtvspi" path="res://Objects/VFX/panels/cold/cold_smoke_particle.gdshader" id="4_3iif8"]
+[ext_resource type="Shader" uid="uid://dgqjmwh218dov" path="res://Objects/VFX/panels/cold/cold_smoke_material.gdshader" id="5_fsvyr"]
+[ext_resource type="Texture2D" uid="uid://dlqju1iuxxtf7" path="res://Objects/VFX/panels/cold/T_Game_FireSetup_s.png" id="6_d2so3"]
+
+[sub_resource type="Curve" id="Curve_snow_alpha"]
+_data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.15, 1), 0.0, 0.0, 0, 0, Vector2(0.85, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_snow_alpha"]
+curve = SubResource("Curve_snow_alpha")
+
+[sub_resource type="Curve" id="Curve_snow_size"]
+_limits = [0.0, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 50), 0.0, -50.0, 0, 0, Vector2(0.5, 27), -30.0, -30.0, 0, 0, Vector2(1, 1), -10.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_snow_size"]
+curve = SubResource("Curve_snow_size")
+
+[sub_resource type="ShaderMaterial" id="ShaderMat_snow_process"]
+shader = ExtResource("1_w0y02")
+shader_parameter/spawn_rate = 30.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 3.0
+shader_parameter/velocity_min = 5.0
+shader_parameter/velocity_max = 15.0
+shader_parameter/cone_angle_max = 60.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 1.0
+shader_parameter/sprite_size_max = 3.0
+shader_parameter/color_intensity_scale = 1.5
+shader_parameter/alpha_curve = SubResource("CurveTexture_snow_alpha")
+shader_parameter/size_curve = SubResource("CurveTexture_snow_size")
+
+[sub_resource type="ShaderMaterial" id="ShaderMat_snow_material"]
+render_priority = 0
+shader = ExtResource("2_f4d75")
+shader_parameter/snowflake_texture = ExtResource("3_5nd0h")
+shader_parameter/emission_strength = 2.0
+shader_parameter/columns = 2
+shader_parameter/rows = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_snow"]
+material = SubResource("ShaderMat_snow_material")
+
+[sub_resource type="Curve" id="Curve_smoke_alpha"]
+_data = [Vector2(0, 0), 0.0, 4.0, 0, 0, Vector2(0.25, 0.664), 1.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, -1.0, 0, 0, Vector2(0.75, 0.703), -1.0, -1.0, 0, 0, Vector2(1, 0), -4.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_smoke_alpha"]
+curve = SubResource("Curve_smoke_alpha")
+
+[sub_resource type="Curve" id="Curve_smoke_scale"]
+_data = [Vector2(0, 0.3), 0.0, 1.5, 0, 0, Vector2(0.5, 0.7), 1.0, 0.8, 0, 0, Vector2(1, 1), 0.3, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_smoke_scale"]
+curve = SubResource("Curve_smoke_scale")
+
+[sub_resource type="ShaderMaterial" id="ShaderMat_coldsmoke_process"]
+shader = ExtResource("4_3iif8")
+shader_parameter/spawn_rate = 25.0
+shader_parameter/lifetime_min = 1.5
+shader_parameter/lifetime_max = 2.0
+shader_parameter/sprite_size_min = 25.0
+shader_parameter/sprite_size_max = 35.0
+shader_parameter/alpha_min = 0.2
+shader_parameter/alpha_max = 0.4
+shader_parameter/color_intensity = 100.0
+shader_parameter/velocity_min = Vector3(0, 5, 0)
+shader_parameter/velocity_max = Vector3(0, 10, 0)
+shader_parameter/spawn_area = 0.05
+shader_parameter/alpha_curve = SubResource("CurveTexture_smoke_alpha")
+shader_parameter/scale_curve = SubResource("CurveTexture_smoke_scale")
+
+[sub_resource type="ShaderMaterial" id="ShaderMat_coldsmoke_material"]
+render_priority = 0
+shader = ExtResource("5_fsvyr")
+shader_parameter/smoke_texture = ExtResource("6_d2so3")
+shader_parameter/emission_strength = 1.5
+shader_parameter/erosion_amount = 0.3
+shader_parameter/columns = 8
+shader_parameter/rows = 8
+shader_parameter/light_direction = Vector3(0.3, -1, 0.2)
+shader_parameter/light_color = Vector3(0.45, 0.85, 1)
+shader_parameter/light_intensity = 1.0
+shader_parameter/ambient_color = Vector3(0.2, 0.35, 0.6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_coldsmoke"]
+material = SubResource("ShaderMat_coldsmoke_material")
+
+[node name="NS_CHPanel_ChilledPowerIdle" type="Node3D" unique_id=1162674795]
+
+[node name="Snowflakes" type="GPUParticles3D" parent="." unique_id=2074668329]
+amount = 30
+lifetime = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ShaderMat_snow_process")
+draw_pass_1 = SubResource("QuadMesh_snow")
+
+[node name="ColdSmoke" type="GPUParticles3D" parent="." unique_id=547295688]
+amount = 15
+lifetime = 1.75
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ShaderMat_coldsmoke_process")
+draw_pass_1 = SubResource("QuadMesh_coldsmoke")

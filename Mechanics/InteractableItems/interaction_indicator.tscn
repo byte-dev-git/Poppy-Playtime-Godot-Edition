@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://gnnmwy7sm047"]
+
+[ext_resource type="Texture2D" uid="uid://h0q3q6q50goa" path="res://PoppyUI/Textures/Foundation/Buttons/Textures/PCKeys/T_E.png" id="1_t05h5"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_a46gh"]
+size = Vector2(0.08, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt5f8"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_t05h5")
+billboard_mode = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_yufqg"]
+radius = 0.007
+height = 0.014
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko2d3"]
+shading_mode = 0
+
+[node name="Indicator" type="Node3D" unique_id=1282877041]
+
+[node name="KeyInd" type="MeshInstance3D" parent="." unique_id=124945705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.017603189)
+mesh = SubResource("QuadMesh_a46gh")
+surface_material_override/0 = SubResource("StandardMaterial3D_bt5f8")
+
+[node name="CircleInd" type="MeshInstance3D" parent="." unique_id=791245822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.017603189)
+visible = false
+mesh = SubResource("SphereMesh_yufqg")
+surface_material_override/0 = SubResource("StandardMaterial3D_ko2d3")

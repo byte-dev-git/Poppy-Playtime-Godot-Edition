@@ -4,7 +4,8 @@ extends StaticBody3D
 enum Hands {
 	RedHand,
 	PressureHand,
-	ConductiveHand
+	ConductiveHand,
+	PurpleHand
 }
 
 signal scan_complete
@@ -41,7 +42,9 @@ signal scan_failed
 
 @onready var mesh: MeshInstance3D = $SM_HandScanner_w_wire_Proxy/Mesh
 @onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var hand_texture: TextureRect = $HandScanner/SubViewport/T_HandScanner
+@onready var hand_scanner: Control = $HandScanner/SubViewport/HandMaterial
+@onready var text_material: Control = $ScannerText/SubViewport/TextMaterial
+@onready var hand_texture: TextureRect = $HandScanner/SubViewport/HandMaterial/T_HandScanner
 @onready var hand_viewport: SubViewport = $HandScanner/SubViewport
 @onready var scanning_loop: AudioStreamPlayer3D = $SwSfxHandscannerScanningLoop
 @onready var fail: AudioStreamPlayer3D = $SwKeypadFail
@@ -56,7 +59,6 @@ const T_OMNI_HAND_SCANNER_MASK = preload("uid://o36fmw68s0iu")
 const T_VERIFIED_TEXT = preload("uid://bgpoairwsgw7a")
 
 var HandMaterial: StandardMaterial3D
-var TextMaterial: StandardMaterial3D
 var powered: bool = false
 var current_state: int = 0
 var current_hand_side: String = ""
@@ -74,35 +76,23 @@ func _update_visuals() -> void:
 		return
 	
 	HandMaterial = mesh.get_surface_override_material(2) as StandardMaterial3D
-	TextMaterial = mesh.get_surface_override_material(3) as StandardMaterial3D
+
+	if HandMaterial:
+		HandMaterial.uv1_scale = Vector3(1.0, 1.0, 1.0) if is_left else Vector3(-1.0, 1.0, 1.0)
 
 	if is_off:
-		if HandMaterial:
-			HandMaterial.albedo_color = Color.BLACK
-		if TextMaterial:
-			TextMaterial.albedo_color = Color.BLACK
+		if hand_scanner:
+			hand_scanner.modulate = Color.BLACK
+			text_material.modulate = Color.BLACK
 		if hand_texture:
 			hand_texture.texture = null
 		_update_grab_visibility()
 		return
 
-	if HandMaterial:
-		if is_left:
-			HandMaterial.uv1_scale = Vector3(1.0, 1.0, 1.0)
-			if current_state in [0, 1, 2]:
-				HandMaterial.albedo_color = Color.ROYAL_BLUE
-		else:
-			HandMaterial.uv1_scale = Vector3(-1.0, 1.0, 1.0)
-			if current_state in [0, 1, 2]:
-				HandMaterial.albedo_color = hand_color
+	if hand_scanner and current_state in [0, 1, 2]:
+		hand_scanner.modulate = Color.ROYAL_BLUE if is_left else hand_color
+		text_material.modulate = Color.ROYAL_BLUE if is_left else hand_color
 
-		if TextMaterial:
-			if is_left:
-				if current_state in [0, 1, 2]:
-					TextMaterial.albedo_color = Color.ROYAL_BLUE
-			else:
-				if current_state in [0, 1, 2]:
-					TextMaterial.albedo_color = hand_color
 	_update_grab_visibility()
 
 func _update_grab_visibility() -> void:
@@ -129,12 +119,13 @@ func set_state(state: int) -> void:
 	if is_off:
 		return
 
-	if current_state == 3:
-		if HandMaterial: HandMaterial.albedo_color = Color.GREEN
-		if TextMaterial: TextMaterial.albedo_color = Color.GREEN
-	elif current_state == 4:
-		if HandMaterial: HandMaterial.albedo_color = Color.CRIMSON
-		if TextMaterial: TextMaterial.albedo_color = Color.CRIMSON
+	if hand_scanner:
+		if current_state == 3:
+			hand_scanner.modulate = Color.GREEN
+			text_material.modulate = Color.GREEN
+		elif current_state == 4:
+			hand_scanner.modulate = Color.CRIMSON
+			text_material.modulate = Color.CRIMSON
 
 	if hand_texture:
 		match current_state:

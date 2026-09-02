@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6ctoofi7ttr1"]
+
+[ext_resource type="Texture2D" uid="uid://dmoenwqiuqslv" path="res://Mechanics/JumpPad/Materials/Textures/T_Jump_Pad_ORMA.png" id="1_xmpv1"]
+
+[sub_resource type="Gradient" id="Gradient_duerm"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.8000002, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_duerm"]
+gradient = SubResource("Gradient_duerm")
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_xmpv1")
+emission_enabled = true
+emission = Color(0.5999999, 0, 1, 1)
+emission_energy_multiplier = 2.25
+detail_enabled = true
+detail_albedo = SubResource("GradientTexture1D_duerm")

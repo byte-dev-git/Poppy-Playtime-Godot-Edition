@@ -141,22 +141,29 @@ shadow_mesh = SubResource("ArrayMesh_0uqdo")
 [sub_resource type="ViewportTexture" id="ViewportTexture_hmq0y"]
 viewport_path = NodePath("HandScanner/SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_jv3qa"]
+viewport_path = NodePath("HandScanner/SubViewport")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmq0y"]
 resource_local_to_scene = true
-shading_mode = 0
-albedo_color = Color(0.25490198, 0.4117647, 0.88235295, 1)
 albedo_texture = SubResource("ViewportTexture_hmq0y")
+emission_enabled = true
+emission_energy_multiplier = 1.25
+emission_texture = SubResource("ViewportTexture_jv3qa")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_yufqg"]
+viewport_path = NodePath("ScannerText/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o0omt"]
 viewport_path = NodePath("ScannerText/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yrc4"]
 resource_local_to_scene = true
 resource_name = "MI_ScannerText"
-shading_mode = 0
-albedo_color = Color(0.25490198, 0.4117647, 0.88235295, 1)
 albedo_texture = SubResource("ViewportTexture_yufqg")
-uv1_offset = Vector3(1, 1, 1)
+emission_enabled = true
+emission_energy_multiplier = 1.25
+emission_texture = SubResource("ViewportTexture_o0omt")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yufqg"]
 radius = 0.31367242
@@ -211,7 +218,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewport/T_Ready:texture")
+tracks/0/path = NodePath("SubViewport/TextMaterial/T_Ready:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -223,7 +230,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HandScanner/SubViewport/T_ScanLine:position")
+tracks/1/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_ScanLine:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -235,7 +242,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HandScanner/SubViewport/T_Gradient:visible")
+tracks/2/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_Gradient:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -263,7 +270,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewport/T_Ready:texture")
+tracks/0/path = NodePath("SubViewport/TextMaterial/T_Ready:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -287,7 +294,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HandScanner/SubViewport/T_ScanLine:position")
+tracks/2/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_ScanLine:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -299,7 +306,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../HandScanner/SubViewport/T_Gradient:visible")
+tracks/3/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_Gradient:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -316,7 +323,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewport/T_Ready:texture")
+tracks/0/path = NodePath("SubViewport/TextMaterial/T_Ready:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -340,7 +347,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HandScanner/SubViewport/T_Gradient:visible")
+tracks/2/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_Gradient:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -352,7 +359,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../HandScanner/SubViewport/T_ScanLine:position")
+tracks/3/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_ScanLine:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -368,7 +375,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../HandScanner/SubViewport/T_ScanLine:position")
+tracks/0/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_ScanLine:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -380,7 +387,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HandScanner/SubViewport/T_Gradient:visible")
+tracks/1/path = NodePath("../HandScanner/SubViewport/HandMaterial/T_Gradient:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -392,7 +399,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubViewport/T_Ready:texture")
+tracks/2/path = NodePath("SubViewport/TextMaterial/T_Ready:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -566,7 +573,16 @@ metadata/_edit_use_anchors_ = true
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="T_HandScanner" type="TextureRect" parent="HandScanner/SubViewport" unique_id=545154555]
+[node name="HandMaterial" type="Control" parent="HandScanner/SubViewport" unique_id=635679596]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="T_HandScanner" type="TextureRect" parent="HandScanner/SubViewport/HandMaterial" unique_id=545154555]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -575,7 +591,8 @@ grow_vertical = 2
 texture = ExtResource("8_dlm8l")
 expand_mode = 1
 
-[node name="T_Gradient" type="TextureRect" parent="HandScanner/SubViewport" unique_id=497302493]
+[node name="T_Gradient" type="TextureRect" parent="HandScanner/SubViewport/HandMaterial" unique_id=497302493]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -584,7 +601,8 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_xuyym")
 expand_mode = 1
 
-[node name="T_ScanLine" type="TextureRect" parent="HandScanner/SubViewport" unique_id=1210405249]
+[node name="T_ScanLine" type="TextureRect" parent="HandScanner/SubViewport/HandMaterial" unique_id=1210405249]
+layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.25
 anchor_right = 1.0
@@ -594,8 +612,9 @@ texture = SubResource("GradientTexture2D_wsu8b")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="T_Noise" type="ColorRect" parent="HandScanner/SubViewport" unique_id=1061288517]
+[node name="T_Noise" type="ColorRect" parent="HandScanner/SubViewport/HandMaterial" unique_id=1061288517]
 material = SubResource("ShaderMaterial_x2up2")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -615,7 +634,16 @@ metadata/_edit_use_anchors_ = true
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="Bg" type="ColorRect" parent="ScannerText/SubViewport" unique_id=1752645380]
+[node name="TextMaterial" type="Control" parent="ScannerText/SubViewport" unique_id=366922895]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="ScannerText/SubViewport/TextMaterial" unique_id=1752645380]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -623,17 +651,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="T_Ready" type="TextureRect" parent="ScannerText/SubViewport" unique_id=1536467012]
+[node name="T_Ready" type="TextureRect" parent="ScannerText/SubViewport/TextMaterial" unique_id=1536467012]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_hmq0y")
+texture = ExtResource("11_ycg2x")
 expand_mode = 1
 
-[node name="T_Noise" type="ColorRect" parent="ScannerText/SubViewport" unique_id=1775384619]
+[node name="T_Noise" type="ColorRect" parent="ScannerText/SubViewport/TextMaterial" unique_id=1775384619]
 material = SubResource("ShaderMaterial_hmq0y")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

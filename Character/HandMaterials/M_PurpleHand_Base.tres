@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dxiiwqpih7m2u"]
+
+[ext_resource type="Shader" uid="uid://56nn8jfk7qsj" path="res://Character/Shaders/material_orm.gdshader" id="1_shi1i"]
+[ext_resource type="Texture2D" uid="uid://cv6pt03ri2ntl" path="res://Character/HandMaterials/Textures/T_PurpleHand_BC.png" id="2_b2pkv"]
+[ext_resource type="Texture2D" uid="uid://d11wmii8v8xkg" path="res://Character/HandMaterials/Textures/T_RedHandOld_BNT.png" id="3_o4nw7"]
+[ext_resource type="Texture2D" uid="uid://bhgyoe8urth2x" path="res://Character/HandMaterials/Textures/T_StandardHand_N.png" id="4_caorl"]
+[ext_resource type="Texture2D" uid="uid://c2pyxxysbltxx" path="res://Character/HandMaterials/Textures/T_RedHandOld_ORM.png" id="5_35c4v"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_shi1i")
+shader_parameter/albedo = ExtResource("2_b2pkv")
+shader_parameter/normal = ExtResource("4_caorl")
+shader_parameter/bent_normal = ExtResource("3_o4nw7")
+shader_parameter/orm = ExtResource("5_35c4v")
+shader_parameter/flip_normal_y = true
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness_scale = 1.0
+shader_parameter/metallic_scale = 1.0
+shader_parameter/ao_amount = 1.0
+shader_parameter/anisotropy = 0.5000000712500001
+shader_parameter/specular = 0.400000019
