@@ -1,0 +1,54 @@
+[gd_resource type="Environment" format=3 uid="uid://dufe7dl1dvwrr"]
+
+[ext_resource type="CompressedTexture3D" uid="uid://cssmcyetnmehu" path="res://Character/Correction/VT_Level1-1.hdr" id="1_h5w8i"]
+[ext_resource type="Shader" uid="uid://dfvgycut3hn6t" path="res://Assets/Shaders/aurora_sky.gdshader" id="2_vhvs7"]
+[ext_resource type="Texture2D" uid="uid://bobb30uv64bq2" path="res://Assets/SkyTextures/AllSkyFree_Sky_ColdNight_Equirect.png" id="3_m8ngi"]
+
+[sub_resource type="Gradient" id="Gradient_6b0ao"]
+offsets = PackedFloat32Array(0, 0.56766915, 1)
+colors = PackedColorArray(1, 0, 0.9833331, 1, 0, 0.6500001, 1, 1, 0, 1, 0.5999999, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3uljj"]
+gradient = SubResource("Gradient_6b0ao")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_befat"]
+shader = ExtResource("2_vhvs7")
+shader_parameter/equirectangular_sky_texture = ExtResource("3_m8ngi")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_3uljj")
+shader_parameter/brightness = 1.7
+shader_parameter/speed = 0.12
+shader_parameter/height = 42.0
+shader_parameter/scale = 0.8
+
+[sub_resource type="Sky" id="Sky_btlgc"]
+sky_material = SubResource("ShaderMaterial_befat")
+
+[resource]
+background_mode = 2
+background_intensity = 1.0
+sky = SubResource("Sky_btlgc")
+ambient_light_color = Color(0, 1.8049032e-08, 0.15701964, 1)
+ambient_light_energy = 0.05
+tonemap_mode = 4
+ssr_enabled = true
+ssr_max_steps = 128
+ssr_fade_in = 0.32153198
+ssr_fade_out = 3.7321322
+ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 3.0
+ssao_detail = 5.0
+ssil_enabled = true
+ssil_intensity = 2.0
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_energy = 0.1
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_anisotropy = 0.6
+adjustment_enabled = true
+adjustment_color_correction = ExtResource("1_h5w8i")
