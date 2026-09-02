@@ -26,6 +26,12 @@
 [ext_resource type="Texture2D" uid="uid://djo4sbo30rhby" path="res://Mechanics/ConductivePanels/Particles/T_NoiseNormal_VFX_01.png" id="15_y0w81"]
 [ext_resource type="Shader" uid="uid://dt3cchawsbi3c" path="res://Mechanics/ConductivePanels/Particles/smoke_particle.gdshader" id="16_emo3n"]
 [ext_resource type="Shader" uid="uid://c8ke1whxwfomj" path="res://Mechanics/ConductivePanels/Particles/smoke_material.gdshader" id="17_ggqot"]
+[ext_resource type="Shader" uid="uid://c4oys754821rk" path="res://Mechanics/ConductivePanels/Particles/snowflakes_particle.gdshader" id="27_4sjg7"]
+[ext_resource type="Shader" uid="uid://eo33m2h1c58f" path="res://Mechanics/ConductivePanels/Particles/snowflakes_material.gdshader" id="28_jatjq"]
+[ext_resource type="Texture2D" uid="uid://bd5puox2kt4qa" path="res://Mechanics/ConductivePanels/Particles/T_Game_FireSetup_s.png" id="29_p2p1o"]
+[ext_resource type="Shader" uid="uid://cfm3aaamjrw6e" path="res://Mechanics/ConductivePanels/Particles/cold_smoke_particle.gdshader" id="30_8ejdu"]
+[ext_resource type="Shader" uid="uid://bnminh0yjn6a6" path="res://Mechanics/ConductivePanels/Particles/cold_smoke_material.gdshader" id="31_oyqvx"]
+[ext_resource type="Texture2D" uid="uid://dwpjqxblb24w5" path="res://addons/kenney_particle-pack/PNG (Transparent)/spark_03.png" id="32_0s8ys"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xy3tq"]
 resource_name = "MI_ConductiveHand_Icon"
@@ -4086,12 +4092,369 @@ shader_parameter/rows = 8
 [sub_resource type="QuadMesh" id="QuadMesh_x87op"]
 material = SubResource("ShaderMaterial_h66h4")
 
+[sub_resource type="Curve" id="Curve_8yp6n"]
+_data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.15, 1), 0.0, 0.0, 0, 0, Vector2(0.85, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nx0jc"]
+curve = SubResource("Curve_8yp6n")
+
+[sub_resource type="Curve" id="Curve_vh5n0"]
+_limits = [0.0, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 50), 0.0, -50.0, 0, 0, Vector2(0.5, 27), -30.0, -30.0, 0, 0, Vector2(1, 1), -10.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5vgdj"]
+curve = SubResource("Curve_vh5n0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gl1fs"]
+shader = ExtResource("27_4sjg7")
+shader_parameter/spawn_rate = 30.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 3.0
+shader_parameter/velocity_min = 5.0
+shader_parameter/velocity_max = 15.0
+shader_parameter/cone_angle_max = 60.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 1.0
+shader_parameter/sprite_size_max = 3.0
+shader_parameter/color_intensity_scale = 1.5
+shader_parameter/alpha_curve = SubResource("CurveTexture_nx0jc")
+shader_parameter/size_curve = SubResource("CurveTexture_5vgdj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4ch0"]
+render_priority = 0
+shader = ExtResource("28_jatjq")
+shader_parameter/snowflake_texture = ExtResource("29_p2p1o")
+shader_parameter/emission_strength = 2.0
+shader_parameter/columns = 8
+shader_parameter/rows = 6
+
+[sub_resource type="QuadMesh" id="QuadMesh_c8hyy"]
+material = SubResource("ShaderMaterial_w4ch0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wym27"]
+shader = ExtResource("30_8ejdu")
+shader_parameter/lifetime_min = 1.5
+shader_parameter/lifetime_max = 2.0
+shader_parameter/sprite_size_min = 15.0
+shader_parameter/sprite_size_max = 30.0
+shader_parameter/alpha_min = 0.01
+shader_parameter/alpha_max = 0.056
+shader_parameter/color_intensity = 100.0
+shader_parameter/velocity_min = Vector3(0, 5, 0)
+shader_parameter/velocity_max = Vector3(0, 10, 0)
+shader_parameter/spawn_area = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3oiy"]
+render_priority = 0
+shader = ExtResource("31_oyqvx")
+shader_parameter/smoke_texture = ExtResource("29_p2p1o")
+shader_parameter/emission_strength = 2.0
+shader_parameter/erosion_amount = 0.3
+shader_parameter/columns = 8
+shader_parameter/rows = 8
+shader_parameter/light_direction = Vector3(0.3, -1, 0.2)
+shader_parameter/light_color = Vector3(0.45, 0.85, 1)
+shader_parameter/light_intensity = 1.0
+shader_parameter/ambient_color = Vector3(0.2, 0.35, 0.6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ykhu3"]
+material = SubResource("ShaderMaterial_n3oiy")
+
+[sub_resource type="Shader" id="Shader_4sjg7"]
+code = "shader_type particles;
+
+// === NS_CHPanel_ChilledPowerIdle - Snowflakes ===
+// Small ice/snow particles falling around chilled panel
+// Uses MI_Embers_01 material (2x2 flipbook, velocity-aligned)
+
+uniform float spawn_rate = 30.0;
+uniform float lifetime_min = 1.0;
+uniform float lifetime_max = 3.0;
+uniform float velocity_min = 5.0;
+uniform float velocity_max = 15.0;
+uniform float cone_angle_max = 60.0;
+uniform float origin_sphere_radius = 20.0;
+uniform float sprite_size_min = 1.0;
+uniform float sprite_size_max = 3.0;
+uniform float color_intensity_scale = 1.5;
+uniform sampler2D alpha_curve : filter_linear;
+uniform sampler2D size_curve : filter_linear;
+
+float hash(float n) {
+	return fract(sin(n) * 43758.5453123);
+}
+
+vec3 hash3(float n) {
+	return vec3(hash(n), hash(n + 1.0), hash(n + 2.0));
+}
+
+void start() {
+	float idx = float(INDEX);
+	vec3 rand = hash3(idx * 17.3 + TIME * 0.1);
+	vec3 rand2 = hash3(idx * 31.7 + TIME * 0.3);
+	
+	CUSTOM.x = mix(lifetime_min, lifetime_max, rand.x);
+	CUSTOM.y = 0.0;
+	
+	// 1. Calculate local offset inside the sphere
+	float radius = origin_sphere_radius * 0.01;
+	vec3 sphere_pos = normalize(rand * 2.0 - 1.0) * radius * rand2.x;
+	
+	// 2. Map the local position to the emitter's global position, scale, and rotation
+	TRANSFORM[3].xyz = (EMISSION_TRANSFORM * vec4(sphere_pos, 1.0)).xyz;
+
+	// 3. Extract the parent node's global rotation & scale axes
+	vec3 axis_x = normalize(EMISSION_TRANSFORM[0].xyz) * length(EMISSION_TRANSFORM[0].xyz);
+	vec3 axis_y = normalize(EMISSION_TRANSFORM[1].xyz) * length(EMISSION_TRANSFORM[1].xyz);
+	vec3 axis_z = normalize(EMISSION_TRANSFORM[2].xyz) * length(EMISSION_TRANSFORM[2].xyz);
+
+	// 4. Multiply parent axes by snowflake size so scale and rotation are preserved
+	float size = mix(sprite_size_min, sprite_size_max, rand.z) * 0.005;
+	TRANSFORM[0].xyz = axis_x * size;
+	TRANSFORM[1].xyz = axis_y * size;
+	TRANSFORM[2].xyz = axis_z * size;
+	
+	// 5. Calculate local velocity direction
+	float cone_rad = radians(cone_angle_max);
+	float theta = rand2.y * TAU;
+	float phi = rand2.z * cone_rad;
+	vec3 local_dir = vec3(sin(phi) * cos(theta), -cos(phi), sin(phi) * sin(theta));
+	float speed = mix(velocity_min, velocity_max, rand.y) * 0.01;
+	
+	// 6. Rotate the velocity vector to match the root node's rotation
+	// Using mat3(EMISSION_TRANSFORM) transforms the direction from local to world space
+	VELOCITY = mat3(EMISSION_TRANSFORM) * (local_dir * speed);
+	
+	// Ice blue-white color
+	float color_rand = rand2.x;
+	COLOR.rgb = mix(
+		vec3(0.7, 0.85, 1.0),   // light blue
+		vec3(0.95, 0.97, 1.0),  // almost white
+		color_rand
+	) * color_intensity_scale;
+	COLOR.a = 1.0;
+}
+
+void process() {
+	CUSTOM.y += DELTA;
+	float lifetime = CUSTOM.x;
+	float normalized_age = clamp(CUSTOM.y / lifetime, 0.0, 1.0);
+	
+	if (CUSTOM.y >= lifetime) {
+		ACTIVE = false;
+	}
+	
+	// Alpha: fade in -> hold -> fade out
+	float alpha = texture(alpha_curve, vec2(normalized_age, 0.0)).r;
+	COLOR.a = alpha;
+	
+	// Size shrinks over time relative to its current orientation axes
+	float size_mult = texture(size_curve, vec2(normalized_age, 0.0)).r;
+	float size_factor = size_mult / 50.0;
+	float scale_modifier = max(size_factor, 0.05);
+
+	// Instead of flattening TRANSFORM axes, we scale the existing vector length safely
+	TRANSFORM[0].xyz = normalize(TRANSFORM[0].xyz) * length(TRANSFORM[0].xyz) * scale_modifier;
+	TRANSFORM[1].xyz = normalize(TRANSFORM[1].xyz) * length(TRANSFORM[1].xyz) * scale_modifier;
+	TRANSFORM[2].xyz = normalize(TRANSFORM[2].xyz) * length(TRANSFORM[2].xyz) * scale_modifier;
+	
+	// Gentle drift + slight gravity (stays in global space direction)
+	VELOCITY.y -= 0.01 * DELTA;
+	VELOCITY.x += sin(TIME * 2.0 + float(INDEX) * 0.7) * 0.001;
+	VELOCITY.z += cos(TIME * 1.5 + float(INDEX) * 1.1) * 0.001;
+}
+"
+
+[sub_resource type="Curve" id="Curve_b2tqm"]
+_data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.15, 1), 0.0, 0.0, 0, 0, Vector2(0.85, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3pgcc"]
+curve = SubResource("Curve_b2tqm")
+
+[sub_resource type="Curve" id="Curve_y63xc"]
+_limits = [0.0, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 50), 0.0, -50.0, 0, 0, Vector2(0.5, 27), -30.0, -30.0, 0, 0, Vector2(1, 1), -10.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tupr1"]
+curve = SubResource("Curve_y63xc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o4ov"]
+shader = SubResource("Shader_4sjg7")
+shader_parameter/spawn_rate = 15.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 3.0
+shader_parameter/velocity_min = 5.0
+shader_parameter/velocity_max = 15.0
+shader_parameter/cone_angle_max = 60.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 1.0
+shader_parameter/sprite_size_max = 3.0
+shader_parameter/color_intensity_scale = 1.5
+shader_parameter/alpha_curve = SubResource("CurveTexture_3pgcc")
+shader_parameter/size_curve = SubResource("CurveTexture_tupr1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdvt4"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(1.8307374, 18.892157, 0, 1)
+albedo_texture = ExtResource("32_0s8ys")
+emission = Color(0, 1, 0.40392157, 1)
+emission_energy_multiplier = 2.0
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_84wmw"]
+material = SubResource("StandardMaterial3D_fdvt4")
+size = Vector2(10, 10)
+
+[sub_resource type="Shader" id="Shader_jatjq"]
+code = "shader_type particles;
+
+// === NS_CHPanel_ChilledPowerIdle - Snowflakes ===
+// Small ice/snow particles falling around chilled panel
+// Uses MI_Embers_01 material (2x2 flipbook, velocity-aligned)
+
+uniform float spawn_rate = 30.0;
+uniform float lifetime_min = 1.0;
+uniform float lifetime_max = 3.0;
+uniform float velocity_min = 5.0;
+uniform float velocity_max = 15.0;
+uniform float cone_angle_max = 60.0;
+uniform float origin_sphere_radius = 20.0;
+uniform float sprite_size_min = 1.0;
+uniform float sprite_size_max = 3.0;
+uniform float color_intensity_scale = 1.5;
+uniform sampler2D alpha_curve : filter_linear;
+uniform sampler2D size_curve : filter_linear;
+
+float hash(float n) {
+	return fract(sin(n) * 43758.5453123);
+}
+
+vec3 hash3(float n) {
+	return vec3(hash(n), hash(n + 1.0), hash(n + 2.0));
+}
+
+void start() {
+	float idx = float(INDEX);
+	vec3 rand = hash3(idx * 17.3 + TIME * 0.1);
+	vec3 rand2 = hash3(idx * 31.7 + TIME * 0.3);
+	
+	CUSTOM.x = mix(lifetime_min, lifetime_max, rand.x);
+	CUSTOM.y = 0.0;
+	
+	// 1. Calculate local offset inside the sphere
+	float radius = origin_sphere_radius * 0.01;
+	vec3 sphere_pos = normalize(rand * 2.0 - 1.0) * radius * rand2.x;
+	
+	// 2. Map the local position to the emitter's global position, scale, and rotation
+	TRANSFORM[3].xyz = (EMISSION_TRANSFORM * vec4(sphere_pos, 1.0)).xyz;
+
+	// 3. Extract the parent node's global rotation & scale axes
+	vec3 axis_x = normalize(EMISSION_TRANSFORM[0].xyz) * length(EMISSION_TRANSFORM[0].xyz);
+	vec3 axis_y = normalize(EMISSION_TRANSFORM[1].xyz) * length(EMISSION_TRANSFORM[1].xyz);
+	vec3 axis_z = normalize(EMISSION_TRANSFORM[2].xyz) * length(EMISSION_TRANSFORM[2].xyz);
+
+	// 4. Multiply parent axes by snowflake size so scale and rotation are preserved
+	float size = mix(sprite_size_min, sprite_size_max, rand.z) * 0.005;
+	TRANSFORM[0].xyz = axis_x * size;
+	TRANSFORM[1].xyz = axis_y * size;
+	TRANSFORM[2].xyz = axis_z * size;
+	
+	// 5. Calculate local velocity direction
+	float cone_rad = radians(cone_angle_max);
+	float theta = rand2.y * TAU;
+	float phi = rand2.z * cone_rad;
+	vec3 local_dir = vec3(sin(phi) * cos(theta), -cos(phi), sin(phi) * sin(theta));
+	float speed = mix(velocity_min, velocity_max, rand.y) * 0.01;
+	
+	// 6. Rotate the velocity vector to match the root node's rotation
+	// Using mat3(EMISSION_TRANSFORM) transforms the direction from local to world space
+	VELOCITY = mat3(EMISSION_TRANSFORM) * (local_dir * speed);
+	
+	// Ice blue-white color
+	float color_rand = rand2.x;
+	COLOR.rgb = mix(
+		vec3(0.7, 0.85, 1.0),   // light blue
+		vec3(0.95, 0.97, 1.0),  // almost white
+		color_rand
+	) * color_intensity_scale;
+	COLOR.a = 1.0;
+}
+
+void process() {
+	CUSTOM.y += DELTA;
+	float lifetime = CUSTOM.x;
+	float normalized_age = clamp(CUSTOM.y / lifetime, 0.0, 1.0);
+	
+	if (CUSTOM.y >= lifetime) {
+		ACTIVE = false;
+	}
+	
+	// Alpha: fade in -> hold -> fade out
+	float alpha = texture(alpha_curve, vec2(normalized_age, 0.0)).r;
+	COLOR.a = alpha;
+	
+	// Size shrinks over time relative to its current orientation axes
+	float size_mult = texture(size_curve, vec2(normalized_age, 0.0)).r;
+	float size_factor = size_mult / 50.0;
+	float scale_modifier = max(size_factor, 0.05);
+
+	// Instead of flattening TRANSFORM axes, we scale the existing vector length safely
+	TRANSFORM[0].xyz = normalize(TRANSFORM[0].xyz) * length(TRANSFORM[0].xyz) * scale_modifier;
+	TRANSFORM[1].xyz = normalize(TRANSFORM[1].xyz) * length(TRANSFORM[1].xyz) * scale_modifier;
+	TRANSFORM[2].xyz = normalize(TRANSFORM[2].xyz) * length(TRANSFORM[2].xyz) * scale_modifier;
+	
+	// Gentle drift + slight gravity (stays in global space direction)
+	VELOCITY.y -= 0.01 * DELTA;
+	VELOCITY.x += sin(TIME * 2.0 + float(INDEX) * 0.7) * 0.001;
+	VELOCITY.z += cos(TIME * 1.5 + float(INDEX) * 1.1) * 0.001;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28qxe"]
+shader = SubResource("Shader_jatjq")
+shader_parameter/spawn_rate = 15.0
+shader_parameter/lifetime_min = 1.0
+shader_parameter/lifetime_max = 3.0
+shader_parameter/velocity_min = 5.0
+shader_parameter/velocity_max = 15.0
+shader_parameter/cone_angle_max = 60.0
+shader_parameter/origin_sphere_radius = 20.0
+shader_parameter/sprite_size_min = 1.0
+shader_parameter/sprite_size_max = 2.0
+shader_parameter/color_intensity_scale = 1.5
+shader_parameter/alpha_curve = SubResource("CurveTexture_3pgcc")
+shader_parameter/size_curve = SubResource("CurveTexture_tupr1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwrr8"]
+transparency = 2
+alpha_scissor_threshold = 0.388
+alpha_antialiasing_mode = 0
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0, 18.892157, 8.116525, 1)
+albedo_texture = ExtResource("32_0s8ys")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_0sit0"]
+material = SubResource("StandardMaterial3D_pwrr8")
+size = Vector2(10, 10)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_om66o"]
 size = Vector3(0.09765625, 0.12866211, 0.04296875)
 
-[node name="ConductiveHand" type="Node3D" unique_id=39570205 node_paths=PackedStringArray("heat_particles")]
+[node name="ConductiveHand" type="Node3D" unique_id=39570205 node_paths=PackedStringArray("heat_particles", "chill_particles", "electric_particles")]
 script = ExtResource("1_xwc8t")
 heat_particles = [NodePath("FireParticles/HeatDistortion"), NodePath("FireParticles/Smoke")]
+chill_particles = [NodePath("IceParticles/Snowflakes"), NodePath("IceParticles/ColdSmoke")]
+electric_particles = [NodePath("ElectricParticles/Snowflakes"), NodePath("ElectricParticles/Snowflakes2")]
 heat_attach_sfx = ExtResource("2_05efx")
 heat_loop_sfx = ExtResource("4_05efx")
 heat_lose_sfx = ExtResource("5_taxax")
@@ -4524,6 +4887,55 @@ visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
 local_coords = true
 process_material = SubResource("ShaderMaterial_5aryl")
 draw_pass_1 = SubResource("QuadMesh_x87op")
+
+[node name="IceParticles" type="Node3D" parent="." unique_id=1585429041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.09884924)
+
+[node name="Snowflakes" type="GPUParticles3D" parent="IceParticles" unique_id=1669075201]
+transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.57, -0.006451696, 0.03081417, -0.12062964)
+emitting = false
+amount = 30
+lifetime = 2.0
+visibility_aabb = AABB(-0.22, -0.205, -0.33, 0.435, 0.4, 0.69)
+local_coords = true
+process_material = SubResource("ShaderMaterial_gl1fs")
+draw_pass_1 = SubResource("QuadMesh_c8hyy")
+
+[node name="ColdSmoke" type="GPUParticles3D" parent="IceParticles" unique_id=500341225]
+transform = Transform3D(1.4685903, -1.4374517, 0, 1.4374517, 1.4685903, 0, 0, 0, 2.055, 0.018225834, 0.017667428, -0.15532127)
+emitting = false
+amount = 15
+lifetime = 1.75
+fixed_fps = 20
+visibility_aabb = AABB(-0.415, -2, -2, 0.685, 2.05, 0.525)
+local_coords = true
+process_material = SubResource("ShaderMaterial_wym27")
+draw_pass_1 = SubResource("QuadMesh_ykhu3")
+
+[node name="ElectricParticles" type="Node3D" parent="." unique_id=154927021]
+transform = Transform3D(0.5100112, 0, -0.46474573, 0, 0.69, 0, 0.46474573, 0, 0.5100112, 0, 0, -0.022119813)
+
+[node name="Snowflakes" type="GPUParticles3D" parent="ElectricParticles" unique_id=321588069]
+transform = Transform3D(-0.65763855, -1.4449363e-08, -0.7533336, -1.509958e-07, -1, 1.5099555e-07, -0.7533336, 2.1305071e-07, 0.65763855, -0.018254587, 0.004749144, -0.02105052)
+emitting = false
+amount = 63
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-0.22, -0.205, -0.33, 0.435, 0.4, 0.69)
+process_material = SubResource("ShaderMaterial_7o4ov")
+draw_pass_1 = SubResource("QuadMesh_84wmw")
+
+[node name="Snowflakes2" type="GPUParticles3D" parent="ElectricParticles" unique_id=1898158441]
+transform = Transform3D(0.7391467, 0, 0.67354447, 0, 1, 0, -0.67354447, 0, 0.7391467, -0.0086859055, 0.034895584, 0.011709962)
+emitting = false
+amount = 30
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-0.22, -0.205, -0.33, 0.435, 0.4, 0.69)
+process_material = SubResource("ShaderMaterial_28qxe")
+draw_pass_1 = SubResource("QuadMesh_0sit0")
 
 [node name="ConductiveArea" type="Area3D" parent="." unique_id=254176608]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

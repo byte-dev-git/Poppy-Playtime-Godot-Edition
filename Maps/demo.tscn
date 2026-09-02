@@ -527,6 +527,19 @@ max_distance = 4.0
 [node name="GlowbyItem" parent="Mechanics" unique_id=230456345 instance=ExtResource("30_1vly7")]
 transform = Transform3D(-0.25881907, 0.9659258, 1.131334e-08, 4.371139e-08, 1.9106855e-15, 1, 0.9659258, 0.25881907, -4.222196e-08, -4.5597687, 1.1033674, 0.9287573)
 
+[node name="ConductivePanelReceiver" parent="Mechanics" unique_id=1341530273 instance=ExtResource("33_jv3qa")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.663414, 2.927816, -4.8579454)
+
+[node name="ConductivePanelReceiver2" parent="Mechanics" unique_id=1911906478 instance=ExtResource("33_jv3qa")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.663414, 1.9059303, -4.2510834)
+
+[node name="ConductivePanelReceiver3" parent="Mechanics" unique_id=1089021476 instance=ExtResource("33_jv3qa")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.663414, 1.9554114, -5.4854803)
+
+[node name="GrabHandle" parent="Mechanics" unique_id=1444149643 instance=ExtResource("34_dguue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.339839, 8.983841, -12.455808)
+outline = true
+
 [node name="BlacklightMeshes" type="Node3D" parent="." unique_id=158082056]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlacklightMeshes" unique_id=320746258]
@@ -553,18 +566,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_aigcr")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.389414, 1.8267295, 13.128087)
 mesh = SubResource("QuadMesh_a46gh")
 surface_material_override/0 = SubResource("ShaderMaterial_k8w3i")
-
-[node name="ConductivePanelReceiver" parent="." unique_id=1341530273 instance=ExtResource("33_jv3qa")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.663414, 2.927816, -4.8579454)
-
-[node name="ConductivePanelReceiver2" parent="." unique_id=1911906478 instance=ExtResource("33_jv3qa")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.663414, 1.9059303, -4.2510834)
-
-[node name="ConductivePanelReceiver3" parent="." unique_id=1089021476 instance=ExtResource("33_jv3qa")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.663414, 1.9554114, -5.4854803)
-
-[node name="GrabHandle" parent="." unique_id=1444149643 instance=ExtResource("34_dguue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.339839, 8.983841, -12.455808)
-outline = true
 
 [connection signal="cable_powered" from="Mechanics/Cable/Cable" to="." method="_on_cable_cable_powered"]

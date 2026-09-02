@@ -248,9 +248,8 @@ size = Vector2(10, 10)
 [sub_resource type="SphereShape3D" id="SphereShape3D_a46gh"]
 radius = 0.24720307
 
-[node name="ConductivePanelReceiver" type="StaticBody3D" unique_id=1341530273 node_paths=PackedStringArray("particles")]
+[node name="ConductivePanelReceiver" type="StaticBody3D" unique_id=1341530273]
 script = ExtResource("1_34ksk")
-particles = [NodePath("ElectricParticles/Snowflakes"), NodePath("ElectricParticles/Snowflakes2")]
 
 [node name="SM_ConductiveReceiver_A_mo_002" type="MeshInstance3D" parent="." unique_id=1882742474]
 transform = Transform3D(100, 0, 0, 0, -4.3711384e-06, 99.99999, 0, -99.99999, -4.3711384e-06, 0, 0, 0)
@@ -264,9 +263,9 @@ shape = SubResource("ConvexPolygonShape3D_34ksk")
 transform = Transform3D(-0.6490444, 4.6504827e-08, 0.23418236, -0.23418236, 4.8843503e-08, -0.6490444, -6.032172e-08, -0.69, -3.016086e-08, 0.10567606, -0.12940443, 0.11386889)
 
 [node name="Snowflakes" type="GPUParticles3D" parent="ElectricParticles" unique_id=479681621]
-transform = Transform3D(3.7266786, -1.1368684e-13, 1.0369375, 0, 3.1899998, 5.684342e-14, -1.9169537, 0, 2.0158718, 0.00815881, 0.015402108, -0.24737936)
+transform = Transform3D(3.1852343, -2.4611353e-08, 1.4731901, 8.258738e-08, 3.1900003, -2.5335979e-08, -2.7234406, 6.7951326e-08, 1.7229885, -0.105763525, 0.015402108, -0.19103238)
 emitting = false
-amount = 15
+amount = 20
 lifetime = 2.0
 visibility_aabb = AABB(-0.22, -0.205, -0.33, 0.435, 0.4, 0.69)
 local_coords = true
@@ -274,9 +273,9 @@ process_material = SubResource("ShaderMaterial_p0lg1")
 draw_pass_1 = SubResource("QuadMesh_517ye")
 
 [node name="Snowflakes2" type="GPUParticles3D" parent="ElectricParticles" unique_id=6632901]
-transform = Transform3D(4.1908045, -1.1368684e-13, 8.6627855e-15, 2.842171e-14, 3.1899998, 0, 1.192093e-07, 0, 2.2669315, 0.08955862, 0.015402123, -0.24737936)
+transform = Transform3D(4.078227, -2.4611353e-08, 0.52190876, 5.201622e-08, 3.1900003, -4.2964842e-08, -0.96483636, 6.795131e-08, 2.206035, -0.02655033, 0.015402138, -0.20977284)
 emitting = false
-amount = 15
+amount = 20
 lifetime = 2.0
 visibility_aabb = AABB(-0.22, -0.205, -0.33, 0.435, 0.4, 0.69)
 local_coords = true

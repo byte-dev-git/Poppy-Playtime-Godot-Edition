@@ -2,7 +2,7 @@ extends Node3D
 
 
 
-@export var particles: Array[GPUParticles3D]
+@onready var particles: Array[GPUParticles3D] = [$ElectricParticles/Snowflakes, $ElectricParticles/Snowflakes2]
 
 @onready var grab_target: GrabTarget = $GrabTarget
 

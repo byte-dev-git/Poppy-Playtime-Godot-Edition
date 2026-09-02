@@ -59,12 +59,12 @@ var decelleration: float = 50.0
 var jump_height: float = 0.6
 var gravity: float = 9.0
 var camera_sens: float = 1.35
-var camera_smooth_speed: float = 25.0
+var camera_smooth_speed: float = 15.0
 
 var player_height: float = 1.7
 var crouch_depth: float = 0.85
 var crouch_speed: float = 3.5
-var sway_speed: float = 20.0
+var sway_speed: float = 25.0
 
 var jumping: bool = false
 var crouched: bool = false
