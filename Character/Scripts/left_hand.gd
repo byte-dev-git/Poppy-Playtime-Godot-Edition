@@ -238,6 +238,14 @@ func _physics_process(delta: float) -> void:
 					play_animation(held_anim)
 		
 		HandState.LAUNCHING:
+			if current_hit_type == "target" and is_instance_valid(current_target_node):
+				var marker = current_target_node.get("marker") if "marker" in current_target_node else null
+				var launch_pos = current_target_node.get("use_marker_for_launch") if "use_marker_for_launch" in current_target_node else true
+				if marker and is_instance_valid(marker):
+					if launch_pos == true: launch_target_position = marker.global_position
+				else:
+					launch_target_position = current_target_node.global_position
+				
 			launch_elapsed += delta
 			var t: float = 1.0
 			if launch_duration > 0.0:

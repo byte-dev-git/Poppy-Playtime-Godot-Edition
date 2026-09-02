@@ -38,7 +38,6 @@ signal on_released(hand_side: String)
 @export var affect_position: bool = true
 @export var affect_rotation: bool = true
 @export var stop_hand: bool = true
-@export var use_marker_for_position: bool = true 
 @export var use_marker_for_launch: bool = true   
 @export var marker: Marker3D 
 @export var override_anim: bool = false
